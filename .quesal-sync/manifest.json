@@ -1,0 +1,9 @@
+{
+  "course": {
+    "id": "856faa80-cc67-4b63-856c-7959ec3a1852",
+    "name": "Test Course",
+    "description": "A test course for GitHub sync integration testing"
+  },
+  "questionsCount": 218,
+  "assessmentsCount": 19
+}
