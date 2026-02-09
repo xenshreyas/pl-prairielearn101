@@ -1,0 +1,22 @@
+{
+  "uuid": "07fe5313-cc11-44e8-bf35-2fd2f302f424",
+  "type": "Homework",
+  "title": "Testing CS Assessment",
+  "set": "Quesal",
+  "number": "19e8a8ea-4b8e-45a9-aa02-ba2605888e50",
+  "text": "idk man",
+  "zones": [
+    {
+      "title": "Question types",
+      "questions": [
+        {
+          "id": "tour/rankQuestionTypes"
+        }
+      ]
+    },
+    {
+      "title": "Another zone",
+      "questions": []
+    }
+  ]
+}
