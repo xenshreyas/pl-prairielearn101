@@ -14,45 +14,68 @@
   "zones": [
     {
       "title": "David Smith - Explain in Plain Language",
-      "questions": [{ "id": "@gpt-100/auckland-questions/lastZeroInList", "points": 5 }]
+      "questions": []
     },
     {
       "title": "Ramon Lawrence - Database Systems - UML",
       "questions": [
-        { "id": "spiffy_sigcse_2024/ramon_lawrence/er_design/randomUML", "points": 2.5 },
-        { "id": "spiffy_sigcse_2024/ramon_lawrence/er_design/Fish_Store", "points": 2.5 }
+        {
+          "points": 2.5,
+          "id": "spiffy_sigcse_2024/ramon_lawrence/er_design/randomUML"
+        },
+        {
+          "points": 2.5,
+          "id": "spiffy_sigcse_2024/ramon_lawrence/er_design/Fish_Store"
+        }
       ]
     },
     {
       "title": "David Cooper - Polymorphism",
-      "questions": [{ "id": "spiffy_sigcse_2024/david_cooper/java-multi-select/Polymorphism", "points": 5 }]
+      "questions": []
     },
     {
       "title": "Karina Mochetti - Digital Circuits",
-      "questions": [
-        { "id": "spiffy_sigcse_2024/karina_mochetti/SIGCSE_01", "points": 2.5 },
-        { "id": "spiffy_sigcse_2024/karina_mochetti/SIGCSE_02", "points": 2.5 }
-      ]
+      "questions": []
     },
     {
       "title": "Joe Hollingsworth - Assembly Language",
-      "questions": [{ "id": "spiffy_sigcse_2024/joe_hollingsworth/assembly_language", "points": 5 }]
+      "questions": [
+        {
+          "points": 5,
+          "id": "spiffy_sigcse_2024/joe_hollingsworth/assembly_language"
+        }
+      ]
     },
     {
       "title": "Jeff Erickson - Hamiltonian reduction",
-      "questions": [{ "id": "spiffy_sigcse_2024/jeff_erickson/hamiltonian_reduction", "points": 5 }]
+      "questions": [
+        {
+          "points": 5,
+          "id": "spiffy_sigcse_2024/jeff_erickson/hamiltonian_reduction"
+        }
+      ]
     },
     {
       "title": "Zachary Kurmas - Linux Filesystem",
       "questions": [
-        { "id": "spiffy_sigcse_2024/zachary_kurmas/dictionaries_codingbat", "points": 5 },
-        { "id": "spiffy_sigcse_2024/zachary_kurmas/basic-filesystem-workspace", "points": 5 }
+        {
+          "points": 5,
+          "id": "spiffy_sigcse_2024/zachary_kurmas/dictionaries_codingbat"
+        },
+        {
+          "points": 5,
+          "id": "spiffy_sigcse_2024/zachary_kurmas/basic-filesystem-workspace"
+        }
       ]
     },
-
     {
       "title": "Geoffrey Herman - Code Debugging TBD",
-      "questions": [{ "id": "spiffy_sigcse_2024/geoffrey_herman/foobar", "points": 5 }]
+      "questions": [
+        {
+          "points": 5,
+          "id": "spiffy_sigcse_2024/geoffrey_herman/foobar"
+        }
+      ]
     }
   ]
 }
