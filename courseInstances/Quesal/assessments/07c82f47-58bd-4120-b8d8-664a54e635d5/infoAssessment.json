@@ -1,0 +1,109 @@
+{
+  "uuid": "def2a113-4fc8-4456-bea8-073bc53d5164",
+  "type": "Homework",
+  "title": "Random New Assessment",
+  "set": "Quesal",
+  "number": "07c82f47-58bd-4120-b8d8-664a54e635d5",
+  "text": "New Description",
+  "zones": [
+    {
+      "title": "New Layer",
+      "questions": [
+        {
+          "id": "computer_networks/mac_csma_cd_flow"
+        },
+        {
+          "id": "computer_networks/mac_csma_ca_flow"
+        },
+        {
+          "id": "computer_networks/mac_csma_ca_match"
+        },
+        {
+          "id": "computer_networks/mac_backoff_time_draw"
+        },
+        {
+          "id": "computer_networks/mac_rts_cts"
+        },
+        {
+          "id": "computer_networks/bridge_frame_one"
+        },
+        {
+          "id": "computer_networks/bridge_frame_seq"
+        },
+        {
+          "id": "computer_networks/stp_tiebk_bpdu"
+        },
+        {
+          "id": "computer_networks/stp_bpdu_port_state"
+        },
+        {
+          "id": "computer_networks/stp_bpdu_change"
+        },
+        {
+          "id": "computer_networks/stp_draw_tree_d"
+        }
+      ]
+    },
+    {
+      "title": "Network Layer",
+      "questions": [
+        {
+          "id": "computer_networks/ipv4_binary"
+        },
+        {
+          "id": "computer_networks/ipv4_add_net"
+        },
+        {
+          "id": "computer_networks/ipv4_sub_design"
+        },
+        {
+          "id": "computer_networks/ipv4_sub_design_order"
+        },
+        {
+          "id": "computer_networks/static_match_rule"
+        },
+        {
+          "id": "computer_networks/static_network_lpm"
+        },
+        {
+          "id": "computer_networks/ipv4_frags_header_fields"
+        },
+        {
+          "id": "computer_networks/dynamic_dijkstra_table_rand_all"
+        }
+      ]
+    },
+    {
+      "title": "Application Layer",
+      "questions": [
+        {
+          "id": "computer_networks/http_boot_get_sections"
+        },
+        {
+          "id": "computer_networks/ntp_compute"
+        }
+      ]
+    },
+    {
+      "title": "Intro",
+      "questions": [
+        {
+          "id": "computer_networks/intro_layer_order"
+        },
+        {
+          "id": "computer_networks/intro_encap_headers"
+        },
+        {
+          "id": "computer_networks/intro_encap_graphical"
+        },
+        {
+          "id": "computer_networks/intro_cross_net"
+        }
+      ]
+    },
+    {
+      "title": "Network Security",
+      "questions": []
+    }
+  ]
+}
