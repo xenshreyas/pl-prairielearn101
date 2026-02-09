@@ -23,6 +23,10 @@
     {
       "title": "New zone",
       "questions": []
+    },
+    {
+      "title": "Untitled zone",
+      "questions": []
     }
   ]
 }

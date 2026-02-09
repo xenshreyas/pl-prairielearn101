@@ -15,28 +15,28 @@
     {
       "title": "Basic and Official Autograders",
       "questions": [
-        { "id": "Gallery/FirstDirOfPATH", "points": 10 },
-        { "id": "Gallery/PromotionalProduct", "points": 10 },
-        { "id": "Gallery/Invoice", "points": 10 },
-        { "id": "Gallery/RandomCProgram", "points": 10 },
-        { "id": "Gallery/LinkedListRemove", "points": 10 }
-      ],
-      "comment": "This zone contains questions demonstrating the basic functionality of external autograder, as well as official autograders for Java and C. For more info, contact: Jonatan Schroeder jonatan@yorku.ca"
-      },
-    {
-      "title": "Haskell Autograder",
-      "questions": [
-        { "id": "steve/small-sample-with-randomization", "points": 10 },
-        { "id": "steve/sample-with-randomization-and-setup", "points": 10 },
-        { "id": "steve/more-haskelly-sample", "points": 10 },
-        { "id": "steve/very-different-use-of-student-code", "points": 10 }
-      ],
-      "comment": "This zone contains several questions demonstrating the Haskell autograder. For more info, contact: Steve Wolfman wolf@cs.ubc.ca."
+        {
+          "id": "Gallery/PromotionalProduct",
+          "points": 10
+        },
+        {
+          "id": "Gallery/RandomCProgram",
+          "points": 10
+        }
+      ]
     },
     {
       "title": "Sample R Question",
-      "questions": [{ "id": "r_example/createRObject", "points": 10 }],
-      "comment": "This zone contains a question demonstrating the R autograder, and the mapping between 'evaluating code in unit tests' and 'evaluating student answers' that it uses. For more info, contact: Dirk Eddelbuettel deddel@illinois.edu."
+      "questions": [
+        {
+          "id": "r_example/createRObject",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "title": "Another new zone",
+      "questions": []
     }
   ]
 }
