@@ -1,0 +1,47 @@
+{
+  "uuid": "e1d48aad-a122-4e43-a71a-1b1b30da065e",
+  "type": "Homework",
+  "title": "New Assessment",
+  "set": "Quesal",
+  "number": "30ab8121-626e-4b64-9e42-c9e6fbcf289a",
+  "text": "Testing Description",
+  "zones": [
+    {
+      "title": "Basic and Official Autograders",
+      "questions": [
+        {
+          "id": "Gallery/PromotionalProduct"
+        },
+        {
+          "id": "Gallery/RandomCProgram"
+        }
+      ]
+    },
+    {
+      "title": "Haskell Autograder",
+      "questions": [
+        {
+          "id": "steve/sample-with-randomization-and-setup"
+        },
+        {
+          "id": "steve/more-haskelly-sample"
+        },
+        {
+          "id": "steve/very-different-use-of-student-code"
+        }
+      ]
+    },
+    {
+      "title": "Sample R Question",
+      "questions": [
+        {
+          "id": "r_example/createRObject"
+        }
+      ]
+    },
+    {
+      "title": "A random new zone",
+      "questions": []
+    }
+  ]
+}
