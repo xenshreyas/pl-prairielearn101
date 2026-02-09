@@ -1,10 +1,10 @@
 {
-    "uuid": "ff0c7e76-2ba7-4c7c-b5b6-4b68408a1325",
-    "title": "Classify without training error",
-    "topic": "Decision tree",
-    "tags": [
-        "ffund",
-        "choice"
-    ],
-    "type": "v3"
+  "uuid": "ff0c7e76-2ba7-4c7c-b5b6-4b68408a1325",
+  "title": "Classify without training error",
+  "topic": "Decision tree",
+  "tags": [
+    "ffund",
+    "choice"
+  ],
+  "type": "v3"
 }

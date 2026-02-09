@@ -1,21 +1,29 @@
-<pl-question-panel>
-  <p> You have a fitted softmax classifier for a {{params.nclass}}-class classification problem, with the following weights (the first column is the bias):</p>
-  <pl-python-variable params-name="w"></pl-python-variable>
+You have a fitted softmax classifier for a 3-class classification problem, with the following weights (the first column is the bias):
 
-</pl-question-panel>
+array(\[\[  9.8404,  \-0.4188,   0.967 ,  \-2.521 ,  \-1.0842\],
+       \[  2.217 ,   0.5312,  \-0.3148,  \-0.2001,  \-0.9486\],
+       \[\-12.0574,  \-0.1125,  \-0.6523,   2.7211,   2.0328\]\])
 
-<p>What is the output of the model for the input:</p>
-<pl-python-variable params-name="x"></pl-python-variable>
-<br>
-<p><pl-number-input comparison='decdig' digits='3' answers-name="prob-0" label="$P(y = 0 | x) =$"></pl-number-input></p>
-<p><pl-number-input comparison='decdig' digits='3' answers-name="prob-1" label="$P(y = 1 | x) =$"></pl-number-input></p>
-<p><pl-number-input comparison='decdig' digits='3' answers-name="prob-2" label="$P(y = 2 | x) =$"></pl-number-input></p>
+What is the output of the model for the input:
 
-<br><hr>
-<p>The classification for this sample is:</p>
+array(\[6.7, 3.1, 4.4, 1.4\])
 
-<pl-multiple-choice answers-name='mc' hide-letter-keys='true' fixed-order='true'>
-    {{#params.class}}
-  <pl-answer correct="{{ans}}">The sample belongs to class ${{class}}$</pl-answer>
-    {{/params.class}}
-</pl-multiple-choice>
+  
+
+$P(y=0 | x) =$ 
+
+$P(y=1 | x) =$ 
+
+$P(y=2 | x) =$ 
+
+  
+
+* * *
+
+The classification for this sample is:
+
+The sample belongs to class $0$
+
+The sample belongs to class $1$
+
+The sample belongs to class $2$

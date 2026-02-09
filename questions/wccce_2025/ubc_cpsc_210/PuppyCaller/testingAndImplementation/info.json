@@ -14,13 +14,13 @@
     "home": "/home/coder/prairielearn/project/JavaProject/src",
     "enableNetworking": true,
     "gradedFiles": [
-        "main/model/Game.java",
-        "main/model/GameLevel.java",
-        "main/model/Player.java",
-        "main/model/Puppy.java",
-        "main/model/PuppyCaller.java",
-        "main/model/WordList.java",
-        "test/model/PuppyCallerTest.java"
+      "main/model/Game.java",
+      "main/model/GameLevel.java",
+      "main/model/Player.java",
+      "main/model/Puppy.java",
+      "main/model/PuppyCaller.java",
+      "main/model/WordList.java",
+      "test/model/PuppyCallerTest.java"
     ]
   },
   "gradingMethod": "External",

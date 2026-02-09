@@ -3,7 +3,9 @@
   "type": "v3",
   "title": "Attendance",
   "topic": "attendance",
-  "tags": ["attendance"],
+  "tags": [
+    "attendance"
+  ],
   "sharePublicly": true,
   "shareSourcePublicly": true,
   "singleVariant": true,

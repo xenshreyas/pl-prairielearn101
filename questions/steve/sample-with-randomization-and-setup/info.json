@@ -8,7 +8,9 @@
   "externalGradingOptions": {
     "enabled": true,
     "image": "cswolf/haskell-prairielearn",
-    "serverFilesCourse": ["haskell-grader/"],
+    "serverFilesCourse": [
+      "haskell-grader/"
+    ],
     "entrypoint": "/grade/serverFilesCourse/haskell-grader/run-qc-lib.sh"
   }
 }

@@ -1,28 +1,13 @@
-<pl-question-panel>
+Even though you just wrote three happy path test cases that check three different behaviors, some of those test cases have elements in common that we can DRY out. In the next part, we will DRY out those elements by gathering them into a common `before(:each)` block.
 
-  <p>
-    Even though you just wrote three happy path test cases that check three different behaviors,
-    some of those test cases have elements in common that we can DRY out.
-    In the next part, we will DRY out those elements by gathering them into a common
-    <code>before(:each)</code> block.
-  </p>
+Comparing the three test cases, which parts of the test pattern (arrange, act, assert) are common among the three?
 
-  <p>
-    Comparing the three test cases, which parts of the
-    test pattern (arrange, act, assert) are common among the three?
-  </p>
-</pl-question-panel>
+Checkbox options
 
-<pl-checkbox answers-name="a1" fixed-order="true" hide-letter-keys="true">
-  <pl-answer correct="true"
-             feedback="Correct: all test cases require first setting up a valid GiftCard object.">
-    Arrange
-  </pl-answer>
-  <pl-answer correct="true"
-             feedback="Correct: all test cases stimulate the SUT by attempting a valid withdrawal.">
-    Act
-  </pl-answer>
-  <pl-answer correct="false"
-             feedback="Not quite: the three test cases do have some elements in common, but each test case checks a different assertion.">
-    Assert
-  </pl-answer>
+Arrange
+
+Act
+
+Assert
+
+Select all possible options that apply.

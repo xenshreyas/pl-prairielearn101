@@ -1,53 +1,38 @@
-<pl-question-panel>
-<markdown>
-We have a function called <code>{{params.functionName}}</code> that has the following parameter(s): 
+We have a function called `simBridge` that has the following parameter(s):
 
-{{params.parameterList}}
+1.  the number of simulations to run
+2.  the length of the bridge
+3.  the ID number of the steel to be used in the bridge
+4.  the height of the bridge
 
-The function returns the following value(s): 
+The function returns the following value(s):
 
-{{params.returnVarList}}
+1.  the number of cars on the bridge when the bridge failed
+2.  the wind speed when the bridge failed
 
-
- 
 Here is the function definition:
 
-<pl-code language="matlab">
-{{params.functionHeader}}
+function \[cars, wind\] = simBridge(N, len, id, height)
     % implementation omitted for brevity
 }
-</pl-code>
 
 You may assume this function is written correctly and behaves as intended.
 
 In a program, we declare these variable(s):
 
-<pl-code language="matlab">
-{{params.argumentList}}
-</pl-code>
+n\_sim \= 40000; 
+length\_bridge \= 437.26; 
+ID\_num \= "CbVAM"; 
+h \= 6.6; 
 
-Which statement correctly calls <code>{{params.functionName}}</code> **and** captures all of the return value(s) from <code>{{params.functionName}}</code>?
+Which statement correctly calls `simBridge` **and** captures all of the return value(s) from `simBridge` ?
 
-</markdown>
-</pl-question-panel>
+\[cars, wind\] \= simBridge(n\_sim, length\_bridge, ID\_num, h);
 
-<pl-hide-in-panel answer="true">
-<pl-multiple-choice answers-name="ans" hide-letter-keys = 'true'>
-  {{#params.line1}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.line1}}
-</pl-multiple-choice>
-</pl-hide-in-panel>
+\[n\_sim, length\_bridge, h, ID\_num\] \= simBridge(height, id, N, len);
 
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
+simBridge\[ID\_num, length\_bridge, n\_sim, h\];
 
-This question uses the following skills: 
+(n\_sim, length\_bridge, ID\_num, h) \= function simBridge\[\];
 
-* calling custom MATLAB functions
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
+\[h, n\_sim, ID\_num, length\_bridge\] \= simBridge\[cars, wind\];

@@ -1,243 +1,289 @@
-<pl-full-width></pl-full-width>
-
-<pl-question-panel>
-<markdown>
 #### Introduction
-{{params.intro}}
 
-<pl-figure file-name="{{params.image_in}}" directory="clientFilesQuestion" width="600px"></pl-figure>
-*{{params.image_in_caption}}*
+NASA and NOAA have collected satellite images that calculate the Vegetation Health Image (VHI) of regions of the world. The VHI shows the drought status of a particular region, and these satellite images allow scientists to predict crop yields from various parts of the world. Here is an example VHI:
 
-&nbsp;  
+_The Vegetation Health Index map shows crop health in the continguous United States from July 22, 2019. source: https:// www.nasa.gov/feature/how-satellite-maps-help-prevent-another-great-grain-robbery_
 
 #### Tasks
-You are interning at a company called *{{params.company_name}}*, and you have been asked to take a closer look at the {{params.data_description}} for different locations. In particular, *{{params.company_name}}* would like you to **write a function that will {{params.func1shortdescription}}** and **write a function that will {{params.func2shortdescription}}**.
 
-In this question, you will write **two functions** to perform these tasks. The reference material for this question contains key details about each function you need to write. We recommend you skim it briefly and refer back to it as you compose your functions below. 
+You are interning at a company called _We Love Plants_, and you have been asked to take a closer look at the VHI data for different locations. In particular, _We Love Plants_ would like you to **write a function that will crop an image** and **write a function that will highlight an image**.
 
+In this question, you will write **two functions** to perform these tasks. The reference material for this question contains key details about each function you need to write. We recommend you skim it briefly and refer back to it as you compose your functions below.
 
-
----
-</markdown>
-</pl-question-panel>
-
-
-<pl-hide-in-panel answer="true">
-<pl-side-by-side>
-<pl-content>
-
-<pl-hide-in-panel submission="true">
-<markdown>
+* * *
 
 ### Implementation
 
-Implement your functions by selecting from the lines of code given below for each part. Click all lines that should be included. You are not able to change the relative ordering of the lines. When finished, **the selected lines should form working functions** that correctly implement the tasks described in this question. Some lines contain **mistakes** or are **unnecessary** for the function - these lines should not be selected. **Points will be deducted if you select unnecessary lines of code.** 
+Implement your functions by selecting from the lines of code given below for each part. Click all lines that should be included. You are not able to change the relative ordering of the lines. When finished, **the selected lines should form working functions** that correctly implement the tasks described in this question. Some lines contain **mistakes** or are **unnecessary** for the function - these lines should not be selected. **Points will be deducted if you select unnecessary lines of code.**
 
 We have also provided several **comments** to help structure your script according to the task descriptions.
 
-</markdown>
-</pl-hide-in-panel>
+* * *
+
+#### Function #1: `cropImage`
+
+   % Create the function header 
+
+Checkbox options
+
+(img) \= function{iCol, iRow, img, offset}
+
+function \[img\] \= cropImage( )
+
+function \[img\] \= cropImage(img, iRow, iCol, offset)
+
+function \[img\] \= cropImage(img)
+
+function {img, iRow, iCol, offset} = cropImage(img, iRow, iCol, offset)
+
   
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function #1: `{{params.helper1functionname}}`
 
-</markdown>
+       % Determine the range of rows and columns to keep 
 
-<pl-code language="matlab">   % {{params.func1step1description}} </pl-code>
-<pl-checkbox answers-name='func1step1' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func1line1}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func1line1}}
-</pl-checkbox>
-<br>
+Checkbox options
+
+    rows \= \[iRow \- offset, iRow + offset\];
+    cols \= \[iCol \- offset, iCol + offset\];
+
+    rows \= (iRow ./ offset, iRow ./ offset);
+    cols \= \[iCol ./ offset, iCol ./ offset\];
+
+    rows \= (iRow ./ offset, iRow ./ offset);
+    cols \= (iCol ./ offset, iCol ./ offset);
+
+    rows \= \[iRow \- offset, iRow + offset\];
+    cols \= \[iCol + offset, iCol \- offset\];
+
+    rows \= \[iRow + offset, iRow \- offset\];
+    cols \= {iCol + offset, iCol \- offset};
+
   
-<pl-code language="matlab">       % {{params.func1step2description}} </pl-code>
-<pl-checkbox answers-name='func1step2' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.func1line2}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">    {{ans}}</pl-code></pl-answer>
-  {{/params.func1line2}}
-</pl-checkbox>
-<br>
 
-<pl-code language="matlab">       % {{params.func1step3description}} </pl-code>
-<pl-checkbox answers-name='func1step3' partial-credit='false' number-answers='6' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func1line3}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">    {{ans}}</pl-code></pl-answer>
-  {{/params.func1line3}}
-</pl-checkbox>
-<br>
+       % Keep the portion of the image in these ranges 
 
+Checkbox options
 
+    img \= img(rows(0):rows(1), cols(0):cols(1), :);
 
-<pl-code language="matlab">end </pl-code>
+    img \= img(rows{1},rows{2}, cols{1},cols{2}, :);
+
+    img \= img(rows(1):rows(2), cols(1):cols(2), :);
+
+    img \= img(rows(0):rows(1), cols(0):cols(1));
+
+    img \= img(cols{1},cols{2}, rows{1},rows{2}, :);
+
   
-</pl-hide-in-panel>
 
+end 
 
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function #2: `{{params.helper2functionname}}`
+* * *
 
-</markdown>
+#### Function #2: `highlightRed`
 
-<pl-code language="matlab">   % {{params.func2step1description}} </pl-code>
-<pl-checkbox answers-name='func2step1' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line1}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line1}}
-</pl-checkbox>
-<br>
+   % Create the function header 
 
-<pl-code language="matlab">       % {{params.func2step2description}} </pl-code>
-<pl-checkbox answers-name='func2step2' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line2}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line2}}
-</pl-checkbox>
-<br>
+Checkbox options
 
-<pl-code language="matlab">       % {{params.func2step3description}} </pl-code>
-<pl-checkbox answers-name='func2step3' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line3}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line3}}
-</pl-checkbox>
-<br>
+function \[img\] highlightRed(img)
 
-<pl-code language="matlab">       % {{params.func2step4description}} </pl-code>
-<pl-checkbox answers-name='func2step4' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line4}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line4}}
-</pl-checkbox>
-<br>
+highlightRed {img} \= function{img, r\_min, g\_max, b\_max}
 
-<pl-code language="matlab">       % {{params.func2step5description}} </pl-code>
-<pl-checkbox answers-name='func2step5' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line5}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line5}}
-</pl-checkbox>
-<br>
+\[img\] \= function( )
 
-<pl-code language="matlab">       % {{params.func2step6description}} </pl-code>
-<pl-checkbox answers-name='func2step6' partial-credit='false' number-answers='8' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-  {{#params.func2line6}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.func2line6}}
-</pl-checkbox>
-<br>
+function \[img\] \= highlightRed(img, r\_min, g\_max, b\_max)
 
+function (img) \= highlightRed(img, r\_min, g\_max, b\_max)
 
-<pl-code language="matlab">end </pl-code>
+  
 
-</pl-hide-in-panel>
+       % Pull out the RGB channels 
 
+Checkbox options
 
+    red \= img(:,:,0);
+    green \= img(:,:,1);
+    blue \= img(:,:,2);
 
+    red \= img(:,1,:);
+    green \= img(:,2,:);
+    blue \= img(:,3,:);
 
+    img \= red(:,:,1);
+    img \= green(:,:,2);
+    img \= blue(:,:,3);
 
+    {red,green,blue} \= img;
 
-</pl-content>
+    red \= img(:,:,1);
+    green \= img(:,:,2);
+    blue \= img(:,:,3);
 
+  
 
+       % Find the areas to highlight 
 
-<pl-reference>
+Checkbox options
 
-<markdown>
+    select \= red\>r\_min ~ green<g\_max & blue<b\_max;
 
-### `{{params.func1name}}()`
-    
-The `{{params.func1name}}()` function {{params.func1description}}.
-    
-#### Parameters & Return Values 
-    
-The `{{params.func1name}}()` function has the following parameter(s): 
+    select \= red\>r\_min & green<g\_max & blue<b\_max;
 
-{{params.func1parameterList}}
+    select \= red\==r\_min | green\>g\_max & blue<b\_max;
 
-The `{{params.func1name}}()` function returns the following value(s): 
+    select \= red\>r\_min | green<b\_max | blue<g\_max;
 
-{{params.func1returnVarList}}
-    
+    select \= red\>b\_max & green<r\_min | blue<g\_max;
+
+  
+
+       % Highlight these areas by making them as bright as possible 
+
+Checkbox options
+
+    red(select) \= 255;
+    green(select) \= 255;
+    blue(select) \= 255;
+
+    red(~select, :) \= 1;
+    green(~select, :) \= 1;
+    blue(~select, :) \= 1;
+
+    red(select) \= 1;
+    green(select) \= 1;
+    blue(select) \= 1;
+
+    red\[~select\] \= 255;
+    green\[~select\] \= 255;
+    blue\[~select\] \= 255;
+
+    red \= 255;
+    green \= 255;
+    blue \= 255;
+
+  
+
+       % Set the other areas to be 40% of their original values 
+
+Checkbox options
+
+    red(~select) \= 0.40 .\* red(select);
+    green(~select) \= 0.40 .\* green(select);
+    blue(~select) \= 0.40 .\* blue(select);
+
+    red{~select} \= 0.40 .\* blue(select);
+    green{~select} \= 0.40 .\* green(select);
+
+    red(~select) \= 0.40 .\* red(~select);
+    green(~select) \= 0.40 .\* green(~select);
+    blue(~select) \= 0.40 .\* blue(~select);
+
+    red \= dim(60);
+    blue \= dim(60);
+
+    red(~select) \= 60 .\* red(~select);
+    green(~select) \= 60 .\* green(~select);
+    blue(~select) \= 60 .\* blue(~select);
+
+  
+
+       % Copy the RGB channels back into the image 
+
+Checkbox options
+
+    img(:,:,1) \= red;
+    img(:,:,2) \= green;
+    img(:,:,3) \= blue;
+
+    red;
+    green;
+    blue;
+
+    red \= img;
+    green \= img;
+    blue \= img;
+
+    img\[1,:,:\] \= red;
+    img\[2,:,:\] \= green;
+    img\[3,:,:\] \= blue;
+
+    (red,green,blue) \= img;
+
+  
+
+end 
+
+Reference Material
+
+### `cropImage()`
+
+The `cropImage()` function returns a cropped image. The image is cropped by using a center location (passed in via a row index and a column index) and a "zoom offset" (also passed in); the resulting image has a width and height of (1 + 2 \* (zoom offset)).
+
+#### Parameters & Return Values
+
+The `cropImage()` function has the following parameter(s):
+
+1.  a 3D array representing an image
+2.  the row index to center the crop around
+3.  the column index to center the crop around
+4.  the offset to use (e.g. how many rows/columns to keep around that center point specifed by the row and column parameters)
+
+The `cropImage()` function returns the following value(s):
+
+1.  a 3D array representing the cropped image
+
 #### Algorithm
 
-The algorithm for the `{{params.func1name}}()` function is:
+The algorithm for the `cropImage()` function is:
 
-{{params.func1algorithm}}
+*   Determine the range of rows and columns to keep. The rows and columns should go from (specified value passed into the function - the offset) to (specified value passed into the function + the offset).
+*   Overwrite the image variable with just the portion that is specified by the ranges for the rows and columns.
 
+* * *
 
+### `highlightRed()`
 
----
+The `highlightRed()` function returns an image that is highlighted according to the criteria passed in to the function. In this case, the areas that are "high red and low green/blue" are highlighted and the other areas are dimmed.
 
-### `{{params.func2name}}()`
-    
-The `{{params.func2name}}()` function {{params.func2description}}.
-    
-#### Parameters & Return Values 
-    
-The `{{params.func2name}}()` function has the following parameter(s): 
+#### Parameters & Return Values
 
-{{params.func2parameterList}}
+The `highlightRed()` function has the following parameter(s):
 
-The `{{params.func2name}}()` function returns the following value(s): 
+1.  a 3D array representing an image in RGB format
+2.  the minimum value for the red channel (value: 0-255)
+3.  the maximum value for the green channel (value: 0-255)
+4.  the maximum value for the blue channel (value: 0-255)
 
-{{params.func2returnVarList}}
-    
+The `highlightRed()` function returns the following value(s):
+
+1.  a 3D array representing the highlighted version of the image
+
 #### Algorithm
 
-The algorithm for the `{{params.func2name}}()` function is:
+The algorithm for the `highlightRed()` function is:
 
-{{params.func2algorithm}}
+*   Pull out the RGB channels so that the function can work with them individually.
+*   Find the locations to highlight. The locations to highlight are those locations that have a red value greater than the minimum red value, a green value less the maximum green value, and a blue value less than the maximum blue value.
+*   Highlight these locations by making them as bright as possible -- set the red, green, and blue values for these locations to be their highest possible values in image representation.
+*   To make the highlighting stand out more, dim all the other locations -- set the red, green, and blue values for these locations to be 40% of their original values.
+*   Copy the RGB channels back into the image so that the image variable has been updated with the new, highlighted version.
 
+* * *
 
----
+#### Example
 
+Here is an example of using these two functions to "zoom in" on Michigan.
 
-#### Example 
+% Read in map image
+img \= imread('vhi\_us\_july\_2019.png');
 
-Here is an example of using these two functions to "zoom in" on {{params.location}}.
-</markdown>
-<pl-code language="matlab">
-{{params.example_script}}
-</pl-code>
-<markdown>
+% Crop to Michigan
+img \= cropImage(img, 90, 470, 70);
+
+% Highlight the "high red, low green/blue" areas
+img \= highlightRed(img, 250, 150, 150);
+
+% Display image
+imshow(img);
+
 Running the above code produces the following image:
-
-<pl-figure file-name="{{params.image_out}}" directory="clientFilesQuestion" width="600px">
-</pl-figure>
-
-
-
-
-</markdown>
-
-</pl-reference>
-</pl-side-by-side>
-</pl-hide-in-panel>
-
-
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
-
-This question uses the following skills: 
-
-* using functions to create stable and efficient computer programs
-* working with individual channels for images
-* using logical indexing to select locations to modify
-* using row/column/layer indexing to select a portion of an image
-
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
-
-
-
-
-

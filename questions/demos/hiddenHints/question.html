@@ -1,38 +1,7 @@
-<pl-question-panel>
+Questions below were designed to showcase additional customizations possible with the `pl-hidden-hints` element.The goal of the `pl-hidden-hints` element is to progressively show hints as students submit incorrect (but not invalid) answers.You should submit incorrect answers to see how the hints are shown.
 
-<markdown>
-Questions below were designed to showcase additional customizations possible with the [`pl-hidden-hints`](http://prairielearn.readthedocs.io/en/latest/elements/#pl-hidden-hints-element) element.
-The goal of the [`pl-hidden-hints`](http://prairielearn.readthedocs.io/en/latest/elements/#pl-hidden-hints-element) element is to progressively show hints as students submit incorrect (but not invalid) answers.
-You should submit incorrect answers to see how the hints are shown.
+_Note: Newly revealed hints are first shown as open._
 
-*Note: Newly revealed hints are first shown as open.*
-</markdown>
-</pl-question-panel>
+$1 + 1=$ 
 
-<pl-integer-input answers-name="c_2" label="$1 + 1 = $" correct-answer=2></pl-integer-input>
-
-<pl-question-panel>
-    <pl-hidden-hints>
-
-        <!-- This hint will be shown at the start -->
-        <pl-hint hint-name="Starting Hint">
-            Beginning of the hints to be shown.
-        </pl-hint>
-
-        <!-- This hint will be shown after 1 incorrect submissions-->
-        <pl-hint show-after-submission=1 hint-name="Motivational Hint">
-            Don't worry, we all make mistakes! Try it again!
-        </pl-hint>
-
-        <!-- This hint will be shown after 3 incorrect submissions-->
-        <pl-hint show-after-submission=3>
-            This is a hint that will be shown after <b>three</b> incorrect submissions for the current question.
-        </pl-hint>
-
-        <pl-hint show-after-submission=4 hint-name="Final Hint">
-            This is a hint that will be shown after <b>four</b> incorrect submissions for the current question.
-        </pl-hint>
-
-        <!-- Hints with the same show-after-submission appear in the order they're written -->
-    </pl-hidden-hints>
-</pl-question-panel>
+Starting Hint Beginning of the hints to be shown.

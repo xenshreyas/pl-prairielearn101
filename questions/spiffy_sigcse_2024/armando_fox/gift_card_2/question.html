@@ -1,82 +1,69 @@
-<!-- AUTO-GENERATED FILE -->
-<pl-question-panel>
-<markdown>
+Part 2 of 5: Happy path (withdrawal with sufficient balance)
+============================================================
 
-# Part 2 of 5: Happy path (withdrawal with sufficient balance)
-  
-Now we will write tests for the `#withdraw` method.  
-  
+Now we will write tests for the `#withdraw` method.
+
 Below is the implementation of `GiftCard` again:
-```ruby
+
 class GiftCard
-  attr_reader :balance, :error
+  attr\_reader :balance, :error
   def initialize(balance)
     if balance < 0
       raise ArgumentError.new("New gift card cannot have negative balance")
     end
-    @balance = balance
-    @error = ""
+    @balance \= balance
+    @error \= ""
   end
   def withdraw(amount)
-    if @balance >= amount
-      @balance -= amount
+    if @balance \>= amount
+      @balance \-= amount
     else
-      @error = "Insufficient balance"
+      @error \= "Insufficient balance"
       return nil
     end
   end
 end
-```
-  
+
 In this question, construct tests that verify:
-* a withdrawal when there is enough balance returns success
-* a withdrawal when there is enough balance changes the card balance
-* a withdrawal when there is enough balance does not produce an error message
-  
-The provided code that goes before yours is semantically equivalent to the 
-code you wrote previously, but take note that we have chosen to separate it 
-logically by putting it into a `describe` block.  
 
----
-</markdown>
+*   a withdrawal when there is enough balance returns success
+*   a withdrawal when there is enough balance changes the card balance
+*   a withdrawal when there is enough balance does not produce an error message
 
-</pl-question-panel>
-<!-- see README for where the various parts of question live -->
+The provided code that goes before yours is semantically equivalent to the code you wrote previously, but take note that we have chosen to separate it logically by putting it into a `describe` block.
 
-<pl-faded-parsons format="no-code" language="ruby">
-<pre-text>
+* * *
+
+ 
+
+ 
 describe GiftCard do
   describe 'creating' do
     it 'errors with negative balance' do
-      expect { GiftCard.new(-1) }.to raise_error(ArgumentError)
+      expect { GiftCard.new(\-1) }.to raise\_error(ArgumentError)
     end
     it 'successfully assigns a positive balance' do
-      gift_card = GiftCard.new(20)
-      expect(gift_card.balance).to eq(20)
+      gift\_card \= GiftCard.new(20)
+      expect(gift\_card.balance).to eq(20)
     end
   end
-  describe 'withdrawing with sufficient balance' do
-</pre-text>
-<code-lines>
-  it 'returns truthy value' do
-  @gift_card = GiftCard.new(20)
-  @result = @gift_card.!BLANK(15)
-  !BLANK(@result).to be_truthy
-  end
-  it 'changes the balance' do
-  @gift_card = GiftCard.new(20)
-  @result = @gift_card.withdraw(15)
-  expect(@gift_card.balance).to !BLANK(5)
-  end
-  it 'does not result in error message' do
-  @gift_card = GiftCard.new(20)
-  @result = @gift_card.withdraw(15)
-  expect(@gift_card.!BLANK).to be_empty
-  end
-</code-lines>
-<post-text>
-  end
-end
+  describe 'withdrawing with sufficient balance' do 
 
-</post-text>
-</pl-faded-parsons>
+*   `@result=@gift_card.withdraw(15)`
+*   `@result=@gift_card.`  `(15)`
+*   `it 'returns truthy value' do`
+*    `(@result).to be_truthy`
+*   `end`
+*   `expect(@gift_card.`  `).to be_empty`
+*   `it 'changes the balance' do`
+*   `end`
+*   `it 'does not result in error message' do`
+*   `end`
+*   `@result=@gift_card.withdraw(15)`
+*   `@gift_card=GiftCard.new(20)`
+*   `@gift_card=GiftCard.new(20)`
+*   `expect(@gift_card.balance).to`  `(5)`
+*   `@gift_card=GiftCard.new(20)`
+
+   end
+end

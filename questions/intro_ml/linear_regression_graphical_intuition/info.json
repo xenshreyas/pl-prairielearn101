@@ -1,11 +1,10 @@
 {
-    "uuid": "ab1bf785-3726-4d49-a050-da99bdc38c04",
-    "title": "Graphical intuition for linear regression",
-    "topic": "Linear regression",
-    "tags": [
-
-        "ffund",
-        "drawing"
-    ],
-    "type": "v3"
+  "uuid": "ab1bf785-3726-4d49-a050-da99bdc38c04",
+  "title": "Graphical intuition for linear regression",
+  "topic": "Linear regression",
+  "tags": [
+    "ffund",
+    "drawing"
+  ],
+  "type": "v3"
 }

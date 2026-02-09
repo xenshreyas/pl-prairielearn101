@@ -1,44 +1,56 @@
-<pl-question-panel>
-   <p>You are using a 10-segment {{params.color}} LED bar graph. The LED bar graph is a part with 10 LEDs arranged in a single package.</p>
-   <p>The datasheet for the LED bar graph is:
-   <pl-file-download file-name="{{params.datasheet}}" directory="clientFilesQuestion" force-download="false"></pl-file-download>
-  <p>You connect your Pi to the LED bar graph, so that BCM pins 16, 12, 7, 8, 25, 24, 23, 18, 15, 14 are connected (through a series resistor) to the anodes of the LED segments, from the bottom to top of the bar graph.</p>
+You are using a 10-segment red LED bar graph. The LED bar graph is a part with 10 LEDs arranged in a single package.
 
-  <pl-figure file-name="led-bargraph-1_bb.svg" width="100%"></pl-figure>
+The datasheet for the LED bar graph is: DC10EWA-red-kingbright.pdf
 
- <p>You write a function <code>setup_pins</code> to configure the GPIO pins connected to your bar graph, and a function <code>write_bar</code> to make it display a "bar" with the bottom <code>k</code> bars lit.</p>
- <pl-code language='python' source-file-name='code.py'>
-</pl-code>
+You connect your Pi to the LED bar graph, so that BCM pins 16, 12, 7, 8, 25, 24, 23, 18, 15, 14 are connected (through a series resistor) to the anodes of the LED segments, from the bottom to top of the bar graph.
 
-<p><i>Hint:</i> In case you are unfamiliar with Python's slice notation, here's an example to show you how it works:</p>
-<pl-code language='python'>
-l = [0,1,2,3,4,5]
-l[:2] # output will be [0, 1]
-l[2:] # output will be [2, 3, 4, 5]
-</pl-code>
+You write a function `setup_pins` to configure the GPIO pins connected to your bar graph, and a function `write_bar` to make it display a "bar" with the bottom `k` bars lit.
 
-<p>When you try to test your work by running</p>
+import RPi.GPIO as GPIO
+import time
 
-<pl-code language='python'>
-setup_pins(PINS)
-write_bar(PINS, 8)
+GPIO.setmode(GPIO.BCM)
+
+PINS \= \[16,12,7,8,25,24,23,18,15,14\]
+
+def setup\_pins(pinList):
+    for p in pinList:
+        GPIO.setup(p, GPIO.OUT)
+        GPIO.output(p, GPIO.LOW)
+
+def write\_bar(pinList, k):
+    for p in pinList\[:k\]:
+        GPIO.output(p, GPIO.HIGH)
+
+_Hint:_ In case you are unfamiliar with Python's slice notation, here's an example to show you how it works:
+
+l \= \[0,1,2,3,4,5\]
+l\[:2\] \# output will be \[0, 1\]
+l\[2:\] \# output will be \[2, 3, 4, 5\]
+
+When you try to test your work by running
+
+setup\_pins(PINS)
+write\_bar(PINS, 8)
 time.sleep(5)
-write_bar(PINS, 4)
-</pl-code>
+write\_bar(PINS, 4)
 
-<p>it seems to work on the first call to <code>write_bar</code> (the bottom 8 bars are lit). But after the second call to <code>write_bar</code>, you still see 8 bars lit, not 4 as expected.</p>
+it seems to work on the first call to `write_bar` (the bottom 8 bars are lit). But after the second call to `write_bar`, you still see 8 bars lit, not 4 as expected.
 
-<p>Modify <code>write_bar</code> so that the bottom <i>k</i> bars (and only those bars) are lit following a call to <code>write_bar</code>.</p>
+Modify `write_bar` so that the bottom _k_ bars (and only those bars) are lit following a call to `write_bar`.
 
+user\_code.py
 
-<pl-file-editor
-        file-name="user_code.py"
-        ace-mode="ace/mode/python"
-        source-file-name="tests/initial_code.py"
-	font-size="1em"></pl-file-editor>
-</pl-question-panel>
+##### Editor Settings
 
-<pl-submission-panel>
-    <pl-external-grader-results></pl-external-grader-results>
-    <pl-file-preview></pl-file-preview>
-</pl-submission-panel>
+Editor Theme
+
+Font Size
+
+Key Bindings
+
+Close Save changes
+
+Restore original file
+
+Confirm restore original Cancel

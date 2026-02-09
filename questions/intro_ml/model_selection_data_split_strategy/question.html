@@ -1,16 +1,13 @@
-<pl-question-panel>
-<p>{{{params.txt}}}</p>
-</pl-question-panel>
+You are hired by a real estate website to develop a regression model to predict a 'housing market score' based on characteristics like interest rates, inflation, local housing supply, and similar factors.
 
+You are given a dataset on which to train the model. The data has one row for every week in a 2-year period, for every major metro area in the U.S. It has key market factors as features and a 'housing market score' label that was computed based on the sales prices of houses sold that week. It is sorted by metro area, then by time.
 
-<pl-multiple-choice fixed-order="false" hide-letter-keys="true" answers-name="strategy">
-    {{#params.ansTrue}}
-    <pl-answer correct="true">{{.}}</pl-answer>
-    {{/params.ansTrue}}
-    {{#params.ansFalse}}
-    <pl-answer correct="false">{{.}}</pl-answer>
-    {{/params.ansFalse}}
-</pl-multiple-choice>
+The model will eventually be deployed on their website, to help homeowners in major metro areas (the same metro areas as in the datasets!) decide whether or not it is a favorable time to sell their homes.
 
+you should avoid shuffling the data - just use the first part of the (sorted) data for training, and the last part as the test set.
 
-<!-- <pl-answer-panel><br><hr><p><span class="badge badge-primary">Comment</span> {{{params.exp}}} </p></pl-answer-panel> -->
+you should split the data into training and test by group, with metro area as the group ID. This way, each metro area appears either in the training or test set, but not both.
+
+you should make sure the data is randomly shuffled, so that the data in both the training and test sets will be representative of the overall data distribution. This is especially important for sorted data!
+
+you should split the data so that the 'earlier' (in time) samples appear in the training set, and the 'later' samples appear in the test set.

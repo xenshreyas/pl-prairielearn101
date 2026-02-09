@@ -1,11 +1,10 @@
 {
-    "uuid": "26d7c0ce-66d1-47d5-8406-a19ab55b6e79",
-    "title": "Graphical intuition for PCA",
-    "topic": "PCA",
-    "tags": [
-
-        "ffund",
-        "drawing"
-    ],
-    "type": "v3"
+  "uuid": "26d7c0ce-66d1-47d5-8406-a19ab55b6e79",
+  "title": "Graphical intuition for PCA",
+  "topic": "PCA",
+  "tags": [
+    "ffund",
+    "drawing"
+  ],
+  "type": "v3"
 }

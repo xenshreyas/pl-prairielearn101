@@ -1,53 +1,37 @@
-<pl-question-panel>
-<markdown>
-We have a function called <code>{{params.functionName}}</code> that has the following parameter(s): 
+We have a function called `costEstimate` that has the following parameter(s):
 
-{{params.parameterList}}
+1.  the type of printer that will create the 3D print
+2.  the volume of a 3D print
+3.  how busy the 3D print lab currently is as a percentage of full capacity (this value should be between 0 and 100)
 
-The function returns the following value(s): 
+The function returns the following value(s):
 
-{{params.returnVarList}}
-
-
+1.  the estimated time for the 3D print
+2.  an estimate of how much this 3D print will cost
+3.  an estimate of the length of filament is required for the 3D print
 
 Here is the function definition:
 
-<pl-code language="matlab">
-{{params.functionHeader}}
+function \[printTime, filCost, filamentLength\] = costEstimate(printer, volume, how\_busy)
     % implementation omitted for brevity
 }
-</pl-code>
 
 You may assume this function is written correctly and behaves as intended.
 
 In a program, we declare these variable(s):
 
-<pl-code language="matlab">
-{{params.argumentList}}
-</pl-code>
+printer\_option \= 3.15; 
+V \= 4.58; 
+capacity \= 90; 
 
-Which statement correctly calls <code>{{params.functionName}}</code> **and** captures all of the return value(s) from <code>{{params.functionName}}</code>?
+Which statement correctly calls `costEstimate` **and** captures all of the return value(s) from `costEstimate` ?
 
-</markdown>
-</pl-question-panel>
+\[printTime, filCost, filamentLength\] \= costEstimate(printer\_option, V, capacity);
 
-<pl-hide-in-panel answer="true">
-<pl-multiple-choice answers-name="ans" hide-letter-keys = 'true'>
-  {{#params.line1}}
-  <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-  {{/params.line1}}
-</pl-multiple-choice>
-</pl-hide-in-panel>
+\[printTime, filCost, filamentLength\] \= costEstimate\[printer\_option, V, capacity\];
 
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
+costEstimate\[\];
 
-This question uses the following skills: 
+\[printTime, filCost, filamentLength\] \= function costEstimate();
 
-* calling custom MATLAB functions
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
+\[printTime, filCost, filamentLength\] \= costEstimate(printer, how\_busy, volume);

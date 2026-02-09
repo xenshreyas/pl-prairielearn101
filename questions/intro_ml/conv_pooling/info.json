@@ -1,10 +1,10 @@
 {
-    "uuid": "fe19908e-3578-4da5-9132-188737e85104",
-    "title": "Pooling layers",
-    "topic": "Convolutional neural networks",
-    "tags": [
-        "ffund",
-        "numeric"
-    ],
-    "type": "v3"
+  "uuid": "fe19908e-3578-4da5-9132-188737e85104",
+  "title": "Pooling layers",
+  "topic": "Convolutional neural networks",
+  "tags": [
+    "ffund",
+    "numeric"
+  ],
+  "type": "v3"
 }

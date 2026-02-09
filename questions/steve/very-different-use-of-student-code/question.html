@@ -1,34 +1,25 @@
-{{#params}}
-<pl-question-panel>
-  <p>
-    Imagine that we want to store data {{{scenario}}}
-  </p>
-  <p>
-    Your task is to reorder the following words:
-    <blockquote>
-      {{#randomOrder}}
-        <span class="wide"><code>{{.}}</code></span> <span class="wide"></span>
-      {{/randomOrder}}
-    </blockquote>
-    in order to define an algebraic data type for this data.
-  </p>
-  <p>
-    That is, you define the algebraic data type using only the words above
-    to do so, but in whatever order you choose and with whatever
-    spacing/indentation you choose.
-  </p>
-  <pl-file-editor
-    file-name="Lib.hs"
-    ace-mode="ace/mode/haskell"
-    ace-theme="ace/theme/monokai"
-    min-lines="5"
-  ></pl-file-editor>
-</pl-question-panel>
+Imagine that we want to store data about a hedge maze. Because of the way you create the design, a path in the maze can either be a dead-end (no exit) or a split from whicheither two paths or three paths lead out. Also, everypoint (dead-end or split) has a plaque on it indicating the donor name who sponsored that part of the maze (just text). Information about the plaque must go _first_ in your data type's cases.
 
-<pl-submission-panel>
-  <!-- TODO: configure external grader! -->
-  <pl-external-grader-results></pl-external-grader-results>
-  <pl-file-preview></pl-file-preview>
-</pl-submission-panel>
+Your task is to reorder the following words:
 
-{{/params}}
+> `String` `Split2` `data` `HedgeMaze` `String` `Split3` `HedgeMaze` `DeadEnd` `String` `|` `HedgeMaze` `HedgeMaze` `|` `HedgeMaze` `HedgeMaze` `=`
+
+in order to define an algebraic data type for this data.
+
+That is, you define the algebraic data type using only the words above to do so, but in whatever order you choose and with whatever spacing/indentation you choose.
+
+Lib.hs
+
+##### Editor Settings
+
+Editor Theme
+
+Font Size
+
+Key Bindings
+
+Close Save changes
+
+Restore original file
+
+Confirm restore original Cancel

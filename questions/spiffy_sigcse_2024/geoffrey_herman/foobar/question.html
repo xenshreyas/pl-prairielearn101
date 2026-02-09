@@ -1,82 +1,1094 @@
-<pl-question-panel>
-<div id="instructions">
-<h4>Instructions</h4>
-  <p>
-    Translate the C code below to MIPS assembly. Do your best to follow the style guide.
-  </p>
-<pl-hidden-hints>
-  <pl-hint hint-name="MIPS Reference Guide">
-    <pl-template directory="clientFilesCourse" file-name="MIPS_reference.html" log-tag-warnings="false"></pl-template>
-  </pl-hint>
-  <pl-hint hint-name="MIPS Style Guide">
-    <pl-template directory="clientFilesCourse" file-name="mipsstyle.html" log-tag-warnings="false"></pl-template>
-  </pl-hint>
-</pl-hidden-hints>
-  <p>
-    Follow register calling conventions to decide which registers to use. You may assume that functions (e.g., <code>bar()</code>) can be found at a corresponding label (e.g., <code>bar:</code>).
-  </p>
+#### Instructions
 
-<pl-code language="c++">
-void foo(int* A, int x, int y){
-{{{params.code}}}  
-}
-</pl-code>
-<div class="alert alert-danger" role="alert">
-Make sure you follow function calling conventions to access function arguments. Do NOT try to access the test cases directly from you code (i.e., don't use <code>la</code>) as you will fail the autograder. You can change the given test cases by changing the values in the test cases and not the labels if you want to more fully test your code.
-</div>
-</div><!-- end instructions -->
+Translate the C code below to MIPS assembly. Do your best to follow the style guide.
 
-<div id="mips_asm">
-  <!-- Be sure to change the file name to match the function -->
-  <!-- The MIPS code below is what the student will see to start -->
-  <pl-file-editor
-    file-name="foo.s" 
-    ace-mode="ace/mode/tcl"
-    >
-.data
-.align 2
-# Test case 0
-test0_array:    .word 0 13 3 -4
-test0_length:   .word 4
-test0_xVal:     .word 2
-test0_yVal:     .word 3
-# Test case 1
-test1_array:    .word 1 2 3 4 5 6 7 8 9
-test1_length:   .word 9
-test1_xVal:     .word 4
-test1_yVal:     .word 5
+MIPS Reference Guide
 
-.text
-.globl  foo
+Core Instruction Set
+--------------------
+
+List of MIPS instructions for CS 233
+
+Name
+
+Mnemonic
+
+Assembly Format
+
+Operation (In Verilog)
+
+Format/  
+Notes
+
+Opcode/  
+Funct
+
+Add
+
+`add`
+
+`add $rd, $rs, $rt`
+
+`R[rd]=R[rs]+R[rt];` `PC=PC+4`
+
+R / (1)
+
+0 / 20 hex
+
+Add Immediate
+
+`addi`
+
+`addi $rt, $rs, imm`
+
+`R[rt]=R[rs] + SignExtImm;` `PC=PC+4`
+
+I / (1,2)
+
+8 hex
+
+Add Immediate Unsigned
+
+`addiu`
+
+`addiu $rt, $rs, imm`
+
+`R[rt]=R[rs] + SignExtImm;` `PC=PC+4`
+
+I / (2)
+
+9 hex
+
+Add Unsigned
+
+`addu`
+
+`addu $rd, $rs, $rt`
+
+`R[rd]=R[rs]+R[rt];` `PC=PC+4`
+
+R
+
+0 / 21 hex
+
+And
+
+`and`
+
+`and $rd, $rs, $rt`
+
+`R[rd]=R[rs] & R[rt];` `PC=PC+4`
+
+R
+
+0 / 24 hex
+
+And Immediate
+
+`andi`
+
+`andi $rt, $rs, imm`
+
+`R[rt]=R[rs] & ZeroExtImm;` `PC=PC+4`
+
+I / (3)
+
+c hex
+
+Branch on Equal
+
+`beq`
+
+`beq $rs, $rt, imm`
+
+`if(R[rs] == R[rt])`  
+  `PC=PC+4+BranchAddr`  
+`else`  
+  `PC=PC+4`
+
+I / (4)
+
+4 hex
+
+Branch on Not Equal
+
+`bne`
+
+`bne $rs, $rt, imm`
+
+`if(R[rs] != R[rt])`  
+  `PC=PC+4+BranchAddr`  
+`else`  
+  `PC=PC+4`
+
+I / (4)
+
+5 hex
+
+Jump
+
+`j`
+
+`j address` or `j label`
+
+`PC=JumpAddr`
+
+J / (5)
+
+2 hex
+
+Jump and Link
+
+`jal`
+
+`jal address` or `jal label`
+
+`R[31]=PC+4;` `PC=JumpAddr`
+
+J / (5)
+
+3 hex
+
+Jump Register
+
+`jr`
+
+`jr $rs`
+
+`PC=R[rs]`
+
+R
+
+0 / 08 hex
+
+Load Byte 
+
+`lb`
+
+`lb $rt, imm($rs)`
+
+`R[rt]={ {24{M[R[rs]+SignExtImm](7)}}, M[R[rs]+SignExtImm](7:0)};` `PC=PC+4`
+
+I / (2)
+
+20 hex
+
+Load Byte Unsigned
+
+`lbu`
+
+`lbu $rt, imm($rs)`
+
+`R[rt]={24’b0, M[R[rs]+SignExtImm](7:0)};` `PC=PC+4`
+
+I / (2)
+
+24 hex
+
+Load Halfword 
+
+`lh`
+
+`lh $rt, imm($rs)`
+
+`R[rt]={ {26{M[R[rs]+SignExtImm](15)}}, M[R[rs]+SignExtImm](15:0)};` `PC=PC+4`
+
+I / (2)
+
+21 hex
+
+Load Halfword Unsigned
+
+`lhu`
+
+`lhu $rt, imm($rs)`
+
+`R[rt]={16’b0,M[R[rs]+SignExtImm](15:0)};` `PC=PC+4`
+
+I / (2)
+
+25 hex
+
+Load Upper Imm
+
+`lui`
+
+`lui $rt, imm`
+
+`R[rt]={imm, 16'b0};` `PC=PC+4`
+
+I
+
+f hex
+
+Load Word
+
+`lw`
+
+`lw $rt, imm($rs)`
+
+`R[rt]=M[R[rs]+SignExtImm];` `PC=PC+4`
+
+I / (2)
+
+23 hex
+
+Move From Coprocessor 0
+
+`mfc0`
+
+`mfc0 $rt, $rd`
+
+`R[rt]=CPR[0,rd];` `PC=PC+4` ( `$rs=0` ) 
+
+R
+
+10 hex / 0
+
+Move To Coprocessor 0
+
+`mtc0`
+
+`mtc0 $rt, $rd`
+
+`CPR[0,rd]=R[rt];` `PC=PC+4` ( `$rs=4` )
+
+R
+
+10 hex / 0
+
+Nor
+
+`nor`
+
+`nor $rd, $rs, $rt`
+
+`R[rd]=~(R[rs] | R[rt]);` `PC=PC+4`
+
+R
+
+0 / 27 hex
+
+Or
+
+`or`
+
+`or $rd, $rs, $rt`
+
+`R[rd]=R[rs] | R[rt];` `PC=PC+4`
+
+R
+
+0 / 25 hex
+
+Or Immediate
+
+`ori`
+
+`ori $rt, $rs, imm`
+
+`R[rt]=R[rs] | ZeroExtImm;` `PC=PC+4`
+
+I / (3)
+
+d hex
+
+Set if Less Than
+
+`slt`
+
+`slt $rd, $rs, $rt`
+
+`R[rd]=(R[rs]<R[rt]) ? 1 : 0;` `PC=PC+4`
+
+R
+
+0 / 2a hex
+
+Set if Less Than Immediate
+
+`slti`
+
+`slti $rt, $rs, imm`
+
+`R[rt]=(R[rs]<SignExtImm) ? 1 : 0;` `PC=PC+4`
+
+I / (2)
+
+a hex
+
+Set if Less Than Immediate Unsigned
+
+`sltiu`
+
+`sltiu $rt, $rs, imm`
+
+`R[rt]=(R[rs]<SignExtImm) ? 1 : 0;` `PC=PC+4`
+
+I / (2, 6)
+
+b hex
+
+Set if Less Than Unsigned
+
+`sltu`
+
+`sltu $rd, $rs, $rt`
+
+`R[rd]=(R[rs]<R[rt]) ? 1 : 0;` `PC=PC+4`
+
+R / (6)
+
+0 / 2b hex
+
+Shift Left Logical
+
+`sll`
+
+`sll $rd, $rt, shamt`
+
+`R[rd]=R[rt]<<shamt;` `PC=PC+4`
+
+R
+
+0 / 00 hex
+
+Shift Right Arithmetic
+
+`sra`
+
+`sra $rd, $rt, shamt`
+
+`R[rd]=R[rt]>>shamt;` (arithmetic) `PC=PC+4`
+
+R
+
+0 / 03 hex
+
+Shift Right Logical
+
+`srl`
+
+`srl $rd, $rt, shamt`
+
+`R[rd]=R[rt]>>shamt;` (logical) `PC=PC+4`
+
+R
+
+0 / 02 hex
+
+Store Byte
+
+`sb`
+
+`sb $rt, imm($rs)`
+
+`M[R[rs]+SignExtImm](7:0)=R[rt](7:0);` `PC=PC+4`
+
+I / (2)
+
+28 hex
+
+Store Halfword
+
+`sh`
+
+`sh $rt, imm($rs)`
+
+`M[R[rs]+SignExtImm](15:0)=R[rt](15:0);` `PC=PC+4`
+
+I / (2)
+
+29 hex
+
+Store Word
+
+`sw`
+
+`sw $rt, imm($rs)`
+
+`M[R[rs]+SignExtImm]=R[rt];` `PC=PC+4`
+
+I / (2)
+
+2b hex
+
+Subtract
+
+`sub`
+
+`sub $rd, $rs, $rt`
+
+`R[rd]=R[rs]-R[rt];` `PC=PC+4`
+
+R / (1)
+
+0 / 22 hex
+
+Subtract Unsigned
+
+`subu`
+
+`subu $rd, $rs, $rt`
+
+`R[rd]=R[rs]-R[rt];` `PC=PC+4`
+
+R
+
+0 / 23 hex
+
+Xor
+
+`xor`
+
+`xor $rd, $rs, $rt`
+
+`R[rd]=R[rs]^R[rt];` `PC=PC+4`
+
+R
+
+0 / 26 hex
+
+Xor Immediate
+
+`xori`
+
+`xori $rt, $rs, imm`
+
+`R[rt]=R[rs]^ZeroExtImm;` `PC=PC+4`
+
+I / (3)
+
+e hex
+
+1.  May cause overflow exception
+2.  `SignExtImm={ {16{inst[15]}}, inst[15:0] }`
+3.  `ZeroExtImm={ {16{1'b0}}, inst[15:0] }`
+4.  `BranchAddr={ {14{immediate[15]}}, immediate, 2'b0 }`
+5.  `JumpAddr={ PC+4[31:28], address, 2'b0 }`
+6.  Operands considered unsigned numbers (vs. 2's complement)
+7.  Atomic test & set pair; `R[rt]=1` if pair atomic, `0` if not atomic
+
+The NAME, MNEMONIC columns tell you a descriptive name (add or add immediate) and a short mnemonic that you will use in your assembly programs ( `add` or `addi` ).
+
+The FORMAT column tells you what basic instruction format the instruction uses for its machine code. See next section for more information on instruction formats.
+
+The OPERATION column provides a Verilog description of what the instruction should ultimately implement. Values on the right are taken from immediately before the positive clock edge and are assigned to the value on the left immediately after the next positive clock edge. `R[ ]` refers to the contents of a register in the register file. `M[ ]` refers to the contents of a memory address in the data memory. `PC` refers to the Program Counter's contents. All other signal names are explained in the footnotes indicated by the numbers in parentheses. Reminder: Curly braces (i.e., `{ }` ) are used for concatenating wires into a bus.
+
+The OPCODE/FUNCT column has either one or two numbers represented in 6-bit hexadecimal (i.e., 0 means 00 0000 and 20 hex  means 10 0000). If the instruction format is R, then the first number is the 6-bit opcode and the second number is the 6-bit funct code. If the instruction format is I or J, then the number is the 6-bit opcode - these instruction formats do not have a funct code.
+
+Basic Instruction Formats
+-------------------------
+
+You will need to know only these three basic instruction formats. All MIPS instructions are encoded as 32-bit pieces of data that can be parsed into smaller fields. The names of the fields and which bits are allocated to each field are shown in the figure. One important thing to notice is that the order of fields in the instruction formats do not match the order of fields in the Verilog or MIPS assembly. For example, if you had the instruction `add $5, $3, $8`, you would be assigning your data to `R[5]`. The `add` instruction's Verilog is `R[rd]=R[rs] + R[rt]`. Consequently, `$5` is `rd`, `$3` is `rs`, and `$8` is `rt`, so that the Verilog and assembly mnemonic match.
+
+Notes on Assembly Format Norms
+------------------------------
+
+*   `$r **s**` is a **s** ource register exclusively, `$r **d**` is a **d** estination register exclusively, `$r **t**` **t** ransitions between being a source and a destination register
+*   Assignment generally goes to the left for instructions that do not use the data memory (e.g., `add $rd, $rs, $rt` is assigning to `$rd`. `lui $rt, imm` is assigning to `$rt` )
+*   If multiple registers are used as sources, `$rs` is listed first, `$rt` is listed second (e.g., `or $rd, $rs, $rt` has two sources as does `beq $rs, $rt, imm` )
+*   Any instruction that reads from (e.g., `lb` or `lw` ), or writes to (e.g., `sb` or `sw` ), data memory treats `R[rs]` as a base address pointer and `imm` as an offset from that base pointer. This **base+offset** behavior is indicated by the `imm($rs)` notation, where the address of the data to be read from or written to in data memory is always `R[rs]+SignExtImm`. Consequently, all data memory instructions use the `$rt, imm($rs)` format. `$rt` transitions from being a source or a destination.
+
+Converting MIPS Assembly to Machine Code
+----------------------------------------
+
+1.  Find the MIPS assembly instruction in the Core Instruction Set table
+2.  Use the second-to-last column to identify the instruction's machine code format. The format will be either R, I, or J. Use the Basic Instruction Format figures to identify the fields you need for that instruction format.
+3.  If it's I-type or J-type format, use the last column to find the opcode (e.g., `andi` has opcode c hex and `jal` has opcode 3 hex ) and convert the hexadecimal opcode to 6-bit unsigned binary (e.g., e hex becomes 001110 and 23 hex becomes 100011).  If it's R-type format, use the last column to find the opcode (first number) and funct code (second number) (e.g., `jr` has opcode 0 and funct code 08 hex and `mfc0` has opcode 10 hex and funct code 0) and convert both to 6-bit unsigned binary.
+4.  If it's J-type format, take the 32-bit instruction memory address signified by the label, strip off the 4 most-significant bits (they will be added back in by `PC+4[31:28]` ) and strip off the 2 least-significant bits (they will be added back in by `2'b0` ), leaving you with the 26-bit address field for the J-type instruction.
+5.  If it's I-type or R-type format, use the Assembly Format column to map the fields of the assembly code to the fields of the instruction format. Convert `$rs`, `$rt`, `$rd`, and `shamt` fields into 5-bit unsigned binary (e.g., `$rs` = `$6` becomes 00110 and `shamt` = 12 becomes 01100). Convert the immediate field into 16-bit 2's complement representation (e.g., imm=24 becomes 0000 0000 0001 1000 and imm=-1 becomes 1111 1111 1111 1111). Any field that is not specified by the Assembly Format column should be all 0s (e.g., `shamt` should 00000 for `add` and `rs` should be 00000 for `lui` ).
+6.  Concatenate all of the fields of your instruction format together as shown in the Basic Instruction Formats diagram. Example: `or $8, $15, $20` is an R-type instruction with opcode=000000 (0 hex ), funct code=100101 (25 hex ), `$rs` = `$15` = 01111, `$rt` = `$20` = 10100, `$rd` = `$8` = 01000, `shamt` = 00000, so the machine code would be 000000 01111 10100 01000 00000 100101.
+
+#### Examples
+
+`add $5, $3, $8` maps to machine code 000000   00011    01000    00101   00000   100000
+
+`addi $5, $3, -8` maps to machine code 001000   00011    00101    1111111111111000
+
+`j 0x0000000c` maps to machine code 000010   00000000000000000000000011
+
+Pseudoinstructions
+------------------
+
+Instructions that you can use when writing assembly code but are not real instructions. These instructions will be converted into real instructions by the assembler. These instructions do not have opcodes or instruction formats because they cannot be translated directly into machine code.
+
+Note: How branch pseudoinstructions get turned into real machine code can vary based on which constants or registers are used. For example, `beq $5, 4, label` would assemble to `ori $1, $0, 4       beq $1, $5, label` but `beq $5, 0xdeadbeef, label` would assemble to `lui $1, $0, 0xdead       ori $1, $1, 0xbeef       beq $1, $5, label`. Consequently, we cannot easily say how much `PC` should increment after branch pseudoinstructions. Rather than specifically indicate how much `PC` would increment, we write `PC=NextInstructionInProgram`, where `NextInstructionInProgram` is address of the instruction in your program that appears after the branch pseudoinstruction in the assembly.
+
+List of MIPS instructions for CS 233
+
+Name
+
+Mnemonic
+
+Assembly Format
+
+Operation (In Verilog)
+
+Branch on Equal (Immediate)
+
+`beq`
+
+`beq $rs, imm, label`
+
+`if(R[rs] == SignExtImm)`  
+  `PC=label`  
+`else`  
+  `PC=NextInstructionInProgram`
+
+Branch Less Than
+
+`blt`
+
+`blt $rs, $rt, label`  
+OR  
+`blt $rs, imm, label`
+
+`if(R[rs] < R[rt])`  
+  `PC=label`  
+`else`  
+  `PC=PC+8`  
+OR  
+`if(R[rs] < SignExtImm)`  
+  `PC=label`  
+`else`  
+  `PC=NextInstructionInProgram`
+
+Branch Greater Than
+
+`bgt`
+
+`bgt $rs, $rt, label`  
+OR  
+`bgt $rs, imm, label`
+
+`if(R[rs] > R[rt])`  
+  `PC=label`  
+`else`  
+  `PC=PC+8`  
+OR  
+`if(R[rs] > SignExtImm)`  
+  `PC=label`  
+`else`  
+  `PC=NextInstructionInProgram`
+
+Branch Less Than or Equal
+
+`ble`
+
+`ble $rs, $rt, label`  
+OR  
+`ble $rs, imm, label`
+
+`if(R[rs] <= R[rt])`  
+  `PC=label`  
+`else`  
+  `PC=PC+8`  
+OR  
+`if(R[rs] <= SignExtImm)`  
+  `PC=label`  
+`else`  
+  `PC=NextInstructionInProgram`
+
+Branch Greater Than or Equal
+
+`bge`
+
+`bge $rs, $rt, label`  
+OR  
+`bge $rs, imm, label`
+
+`if(R[rs] >= R[rt])`  
+  `PC=label`  
+`else`  
+  `PC=PC+8`  
+OR  
+`if(R[rs] >= SignExtImm)`  
+  `PC=label`  
+`else`  
+  `PC=NextInstructionInProgram`
+
+Load Immediate
+
+`li`
+
+`li $rt, imm`
+
+`R[rt]=immediate;` `PC=PC+4`
+
+Move
+
+`move`
+
+`move $rd, $rs`
+
+`R[rd]=R[rs];` `PC=PC+4`
+
+Not
+
+`not`
+
+`not $rd, $rs`
+
+`R[rd]=~R[rs]` `PC=PC+4`
+
+Multiply
+
+`mul`
+
+`mul $rd, $rs, $rt`  
+OR  
+`mul $rt, $rs, imm`
+
+`R[rd]=R[rs]*R[rt];` `PC=PC+4`  
+OR  
+`R[rt]=R[rs]*SignExtImm;` `PC=PC+4`
+
+Divide (Integer division)
+
+`div`
+
+`div $rd, $rs, $rt`  
+OR  
+`div $rt, $rs, imm`
+
+`R[rd]=R[rs]/R[rt];` `PC=PC+4`  
+OR  
+`R[rt]=R[rs]/SignExtImm;` `PC=PC+4`
+
+Remainder (Modulus)
+
+`rem`
+
+`rem $rd, $rs, $rt`  
+OR  
+`rem $rt, $rs, imm`
+
+`R[rd]=R[rs]%R[rt];` `PC=PC+4`  
+OR  
+`R[rt]=R[rs]%SignExtImm;` `PC=PC+4`
+
+Register Name, Number, Use, Call Convention
+-------------------------------------------
+
+*   Register names indicates how registers are expected to be used by convention.
+*   Number indicates the register number in the register file.
+*   Use indicates the expected use of the register by convention.
+*   If a register is not saved across a function call, use caller save conventions for function calls. If register is saved across a function call, use callee save conventions for functions calls. 
+
+Name
+
+Number
+
+Use
+
+Saved Across a Function Call?
+
+`$zero`
+
+0
+
+The Constant Value 0 (cannot be written to)
+
+Not Applicable
+
+`$at`
+
+1
+
+Assembler Temporary (Do not use, unless you know what you are doing)
+
+No
+
+`$v0` - `$v1`
+
+2-3
+
+Return Values for Functions: Use `$v0` for 32-bit return values, use both `$v0` and `$v1` for 64-bit return values
+
+No
+
+`$a0` - `$a3`
+
+4-7
+
+Arguments for Functions: Use `$a0` for first argument, `$a1` for second argument, etc. or multiple registers for 64-bit arguments
+
+No
+
+`$t0` - `$t7`
+
+8-15
+
+Temporaries: Use for any variables that are not covered by other conventions
+
+No
+
+`$s0` - `$s7`
+
+16-23
+
+Saved Temporaries: Use for any variables that are not covered by other conventions
+
+Yes
+
+`$t8` - `$t9`
+
+24-25
+
+Temporaries: Use for any variables that are not covered by other conventions
+
+No
+
+`$k0` - `$k1`
+
+26-27
+
+OS/Kernel temporaries: Don't use except in kernel code
+
+No
+
+`$gp`
+
+28
+
+Global Pointer: Points to a location in the global data segment
+
+Yes
+
+`$sp`
+
+29
+
+Stack Pointer: Points to a location in the user stack
+
+Yes
+
+`$fp`
+
+30
+
+Frame Pointer: Points to a location in the user heap
+
+Yes
+
+`$ra`
+
+31
+
+Return Address: `jal` stores the instruction memory address so that a function call can return using `jr $ra`
+
+No
+
+The MIPS register file has 32 registers. We can access these registers by their addresses by invoking their numbers (e.g., `$5` or `$8` ) or we can invoke them using special names that help us remember how other MIPS assembly programs will be using those registers. These register names signal conventions (or agreed upon behaviors) that will help your code play nicely with code written by other people.
+
+*   `$0` ( `$zero` ) is not really a register and always stores the value **0** and cannot be written to.
+*   `$1` ( `$at` ) **A** ssembler **T** emporary is a special reserved register that you should never use so that your assembler can use it when it needs an extra temporary register without messing up your code. This register may be overwritten by any function you call.
+*   `$2-3` ( `$v0` - `$v1` ) return **V** alue registers that we use to return 32-bit (just `$v0` ) or 64-bit ( `$v0` and `$v1` used in tandem) return values. These registers may be overwritten by any function you call.
+*   `$4-7` ( `$a0-$a3` ) **A** rgument registers that we use to pass arguments to functions. If you need more than 4 arguments, you can pass those values to the function on the stack. These registers may be overwritten by any function you call.
+*   `$8-15`, `24-25` ( `$t0-t9` )  **T** emporary registers that you can use however you want in your code. These registers may be overwritten by any function you call.
+*   `$16-23` ( `$s0-$s7` )  **S** aved temporary registers that you can use however you want in your code, but you must return them back to their original state before you return from your function. If everyone follows convention, then you can rest assured that these registers will always be returned with their original values after any function you call.
+*   `$26-27` ( `$k0-$k1` ) Kernel temporary registers that only the Operating System can use. These registers may be overwritten by any function you call.
+*   `$28` ( `$gp` ) **G** lobal  **P** ointer provides a pointer to where we store global variables in data memory. If everyone follows convention, then you can rest assured that these registers will always be returned with their original values after any function you call.
+*   `$29` ( `$sp` ) **S** tack **P** ointer provides a pointer to where we store the user stack in data memory. If everyone follows convention, then you can rest assured that these registers will always be returned with their original values after any function you call.
+*   `$30` ( `$fp` ) **F** rame **P** ointer provides a pointer to where we store the heap in data memory. If everyone follows convention, then you can rest assured that these registers will always be returned with their original values after any function you call.
+*   `$31` ( `$ra` ) **R** eturn **A** ddress provides a pointer to the instruction after the function that called our current function in instruction memory. These registers may be overwritten by any function you call.
+
+### Conventions and Practices for Register Saving and Function Calls
+
+**Caller Save Conventions** : Registers that are not saved across a function call (e.g., `$a0`, `$v0`, `$t0` ) by convention are considered caller-save registers. To uphold convention, the function that calls another function (the caller) must save the value of any caller-save register on the stack before a function call if the programmers wants to recover the value of those caller-save registers after the function call. The function that is called (the callee) is free to modify caller-save registers without breaking convention. The programmer must restore the value of caller-save registers from the stack after the function call when they wish to use those registers' value again.
+
+**Callee Save Conventions** : Registers that are saved across a function call (e.g., `$s0` and `$sp` ) by convention are considered callee-save registers. The function that is called by another function (the callee) must restore callee-save registers to their original values by the end of the function call. To uphold convention, the programmer must save any callee-save registers they plan to use onto the stack before modifying them. The programmer must restore the value of those callee-save registers from the stack before returning from the function. MIPS Style Guide    
+
+MIPS Style Guidelines
+=====================
+
+### Syntax highlighting
+
+Syntax highlighting greatly enhances the readability of your code and helps catch simple mistakes like typing `$tO` vs `$t0`.
+
+### Indentation
+
+Labels should never be indented, and instructions should always be indented one tab. You should set your tab width to 3-8 spaces and prevent your editor from expanding tabs (Google is your friend if you’re not sure how to).
+
+### Commenting
+
+Comments are essential to understanding what your code is doing and figuring out why it might be breaking, particularly since assembly lacks such niceties as variable names, so be liberal with commenting. A helpful guideline is to make a note of which C statement (or part of a statement) each instruction corresponds to, although this isn’t always straightforward, since some statements involve a lot of intermediate steps and conditions are usually inverted.
+
+### Instruction formatting
+
+The first operand of every instruction should be aligned; the easiest way to do this is to set your tab width to 3-8 spaces and then tab after the instruction name. Comments should also be aligned, and once again, tabs are the best way to achieve this (although you might need more than one).
+
+### Label names
+
+Label names should be all lower case with underscores separating words. Try to make your label names meaningful but not excessively long; a good tip is to base label names on the C control structures they correspond to. Some label names are pretty generic, so to disambiguate, you can prefix them with an abbreviation of the function name. For example, for the function called count\_odd\_elements below, I’ve referred to the start of the for loop as coe\_for.
+
+### Examples
+
+Here’s some C code we’ll be translating - it counts the number of odd elements in an array.
+
+    int count_odd_elements(int *array, int size) {
+        int num_odd_elements = 0;
+        for (int i = 0; i < size; ++i) {
+            if (array[i] & 1) {
+                ++num_odd_elements;
+            }
+        }
+        return num_odd_elements;
+    }
+    
+
+This is a functional but unreadable MIPS translation. Please don’t do this.
+
+count\_odd\_elements:
+li $v0,0
+li $t0,0
+ 
 foo:
-# Write your code below here
-  </pl-file-editor>
-</div>
+bge $t0,$a1,baz
+sll $t1,$t0,2
+add $t1,$a0,$t1
+lw $t1,0($t1)
+and $t1,$t1,1
+beqz $t1,bar
+add $v0,$v0,1
+ 
+bar:
+add $t0,$t0,1
+j foo
+ 
+baz:
+jr $ra
 
-<div id="debugging">
-<pl-mips-debugger editor-id="mips_asm" show-data-panel=true show-stack-panel=true>
-</pl-mips-debugger>
+This is significantly better - the alignment is off, but there are comments and label names make sense.
 
-<div style="padding-top: 1.5rem">
-  <h4>Expected Output</h4>
-  <p>Expected output for the first two test cases. You can check your code with the debugger before submitting. You can also change the values for the two provided test cases to try out different test cases in the debugger.</p>
-<pl-code>
-{{params.test0}}
-{{params.test1}}
-</pl-code>
-</div>
-</div><!-- end debugging -->
+        li $v0, 0 \# num\_odd\_elements = 0
+        li $t0, 0 \# i = 0
+ 
+coe\_for:
+        bge $t0, $a1, coe\_end \# branch if !(i < size)
+        sll $t1, $t0, 2
+        add $t1, $a0, $t1 \# calculate &array\[i\]
+        lw $t1, 0($t1) \# load array\[i\]
+        and $t1, $t1, 1 \# calculate array\[i\] & 1
+        beqz $t1, coe\_for\_next \# branch if !(array\[i\] & 1)
+        add $v0, $v0, 1 \# ++num\_odd\_elements
+ 
+coe\_for\_next:
+        add $t0, $t0, 1 \# ++i
+        j coe\_for
+ 
+coe\_end:
+        jr $ra \# return num\_odd\_elements
 
-<pl-split-view left-ids="instructions debugging" right-ids="mips_asm"></pl-split-view>
+This is the above with proper alignment. This is what we want your MIPS code to look like.
 
-</pl-question-panel>
-<pl-submission-panel>
-  <pl-file-preview></pl-file-preview>
-  <pl-external-grader-results></pl-external-grader-results>
-</pl-submission-panel>
+        li      $v0, 0                  \# num\_odd\_elements = 0
+        li      $t0, 0                  \# i = 0
+ 
+coe\_for:
+        bge     $t0, $a1, coe\_end       \# branch if !(i < size)
+        sll     $t1, $t0, 2
+        add     $t1, $a0, $t1           \# calculate &array\[i\]
+        lw      $t1, 0($t1)             \# load array\[i\]
+        and     $t1, $t1, 1             \# calculate array\[i\] & 1
+        beqz    $t1, coe\_for\_next       \# branch if !(array\[i\] & 1)
+        add     $v0, $v0, 1             \# ++num\_odd\_elements
+ 
+coe\_for\_next:
+        add     $t0, $t0, 1             \# ++i
+        j       coe\_for
+ 
+coe\_end:
+        jr      $ra                     \# return num\_odd\_elements
 
-<script>
-  $(document).ready(() => {
-    $('#split-button').prependTo('#mips_asm .card .card-footer');
-  });
-</script>
+Follow register calling conventions to decide which registers to use. You may assume that functions (e.g., `bar()` ) can be found at a corresponding label (e.g., `bar:` ).
+
+void foo(int\* A, int x, int y){
+  int temp \= bar(A\[x\]);
+  int baz \= bar(y);
+  A\[x\] \= temp \* baz;  
+}
+
+Make sure you follow function calling conventions to access function arguments. Do NOT try to access the test cases directly from you code (i.e., don't use `la` ) as you will fail the autograder. You can change the given test cases by changing the values in the test cases and not the labels if you want to more fully test your code.
+
+foo.s
+
+##### Editor Settings
+
+Editor Theme
+
+Font Size
+
+Key Bindings
+
+Close Save changes
+
+Restore original file
+
+Confirm restore original Cancel
+
+#### MIPS Debugger
+
+Use the Sync Code button to load your assembly code into the debugger, and Reset to re-initialize execution. Use the (Help) button to learn more about how to use the debugger.
+
+*   Run View
+*   Column View
+*   Full View
+
+##### Regs
+
+ Hex  Dec  Bin
+
+###### Special Registers
+
+###### General Registers
+
+###### Special Float Registers
+
+###### Single Precision
+
+###### Double Precision
+
+##### Text Segment
+
+ Kernel text    Instruction value    Source code
+
+User Text Segment
+
+Kernel Text Segment
+
+  Scroll text during execution
+
+Execution speed:  
+
+   
+
+Play Step Reset Sync Code
+
+##### Data Segment
+
+ Kernel data    Hex    Dec
+
+User Data Segment
+
+Kernel Data Segment
+
+##### User Stack
+
+ Hex    Dec
+
+##### Output
+
+##### Console Log
+
+##### MIPS Debugger Full View
+
+×
+
+##### MIPS Debugger Help
+
+×
+
+The MIPS Debugger uses the SPIM simulator to run MIPS code in the browser. It exposes a user interface that allows typical debugging functionalities, such as setting breakpoints and viewing values.
+
+* * *
+
+#### Panels
+
+Major functionality in the debugger are grouped into different "panels". Each panel is displayed as a box with a top header. Supported panels are listed below (some panels might not be enabled for certain questions):
+
+##### Text Panel
+
+This is the main panel in the debugger, where MIPS instructions in instruction memory are displayed. This is where you can find your code once it is loaded into the debugger. The debugger will load some code to initialize the simulator, so your code will appear about 10 lines down. Most questions will also load in code for setting up some sample test cases for the question. These will appear after your code.
+
+The number within brackets to the left of each instruction is the address of the instruction. Use the `Source code` checkbox to view the original source code for the instructions and which line numbers they correspond to. You can also use the `Instruction value` checkbox to see the 32-bit value (in hex) of each instruction. At the bottom of the panel is a set of execution controls (see section below). The next instruction to be executed will be highlighted.
+
+##### Registers Panel
+
+This panel displays the register values. The value representation can be changed to use hexadecimal (Hex), decimal (Dec), or binary (Bin). During execution, if the register value changed, it will be highlighted.
+
+##### Data Panel
+
+This panel shows values currently in data memory. The values can be displayed in hexadecimal (Hex) or decimal (Dec). It organizes them into rows, where each row contains 4 words (each word is 4 bytes). The number in brackets to the left of each row is the address of the starting word in the row. To the right of the row is the string representation (if applicable) of the values.
+
+##### Stack Panel
+
+This panel shows values currently in the stack (another region of memory). Like the data panel, values can be shown as hexadecimal (Hex) or decimal (Dec). Values are organized in rows similar to the data panel. Unlike the data panel, the rows sit at the bottom of the panel and "grow" upwards, mimicking the behavior of a stack.
+
+##### Output Panel
+
+This panel displays any output produced by executing the instructions. In most cases, the printing of values to output is handled by the test cases provided by the question.
+
+##### Logs Panel
+
+This panel displays various debugger messages and information. Common things seen in this console log panel are messages about execution, reaching a breakpoint, etc. If your code contains syntax errors, those messages will show up here.
+
+* * *
+
+#### Breakpoints
+
+Breakpoints allow you to "pause" execution, letting you more easily inspect values in registers or memory in the middle of execution. Once you're done inspecting, you can "continue" execution, which will run until the next breakpoint or until the program finishes.
+
+You can add a breakpoint by clicking on a line of code in the text panel. This will pause execution at the selected instruction. A breakpoint's instruction line will be bolded so that it's distinguished from other lines. To remove the breakpoint, click on the line again.
+
+* * *
+
+#### Controls
+
+There are several controls available for controlling the execution of instructions in the text panel.
+
+##### Scroll Checkbox
+
+By default, the text panel will automatically scroll the highlighted instruction into view during execution. You can disable this scrolling behavior by unchecking this option.
+
+##### Speed Selector
+
+This allows you to control the speed of execution. Drag the selector to the left to slow down, and drag to the right to speed up. When the speed selector is all the way to the right, it will run at max speed. If your code has bugs (e.g. an infinite loop) using max speed can heavily slow down your browser or even cause crashes, so be careful when using this speed setting.
+
+##### Sync Code Button
+
+This button will load your code into the debugger. It will also clear all the values, remove all the breakpoints, and re-initialize the execution state so that the debugger effectively start with a clean slate. Make sure to use this button whenever you change your code.
+
+##### Reset Button
+
+This button stops execution and re-initializes to a clean slate without removing breakpoints. This allows you to more easily "start over" without losing all your breakpoints. If you have edited your code, use the Sync Code button instead.
+
+##### Play/Pause/Continue/Run Button
+
+This button is for running your code. Depending on the state of execution, the button will say something different. When execution hasn't started, it'll be "Play". When executing, it will say "Pause". When a breakpoint is reached, it will be "Continue". And when using max speed, it will say "Run".
+
+##### Step Button
+
+This button lets you execute a single instruction, so you can more easily "step" through your code. This is especially useful when combined with breakpoints: set a breakpoint before some code you're unsure of, run your code up to the breakpoint, then use the step button to carefully step through the instructions that follows.
+
+* * *
+
+#### Views
+
+The debugger provides different "views" that exposes a select set of functionalities.
+
+##### Run View
+
+This view allows you to more easily execute your code and view its output at-a-glance, by exposing a minimal set of panels and controls, and running at max speed.
+
+##### Column View
+
+To troubleshoot your code, use the Column View to get access to the instruction text panel, setting breakpoints, and viewing register values, among other functionalities (will vary depending on the question).
+
+##### Full View
+
+The Full View opens a fullscreen window within the page to provide a more immersive experience with the debugger. It provides almost all the panels and functionalities in the debugger.
+
+#### Expected Output
+
+Expected output for the first two test cases. You can check your code with the debugger before submitting. You can also change the values for the two provided test cases to try out different test cases in the debugger.
+
+0 13 33856 -4 
+1 2 3 4 34596 6 7 8 9 
+
+Open split view
+
+##### Split View
+
+×

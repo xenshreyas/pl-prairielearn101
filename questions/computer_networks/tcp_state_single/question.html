@@ -1,17 +1,24 @@
-<pl-question-panel>
-<div class="alert alert-info"  role="alert">
-    To answer this question, you may use the <a href="https://ffund.github.io/tcp-ip-essentials/lab-tcp/StateTransitionDiagram.svg" class="alert-link">TCP state transition diagram</a>.
-</div>
-    <br>
-  <p>A TCP {{params.endpoint}} is in the {{params.starting}} state.</p>
-  <p>Then, it {{{params.next}}}</p>
-</pl-question-panel>
+To answer this question, you may use the TCP state transition diagram.
 
+  
 
-<p>What state is the {{params.endpoint}} in now?</p>
+A TCP server is in the CLOSE\_WAIT state.
 
-<pl-multiple-choice hide-letter-keys="true" answers-name="newstate" fixed-order="false">
-    {{#params.mc}}
-    <pl-answer correct="{{ans}}">{{tag}}</pl-answer>
-    {{/params.mc}}
-</pl-multiple-choice>
+Then, it sends the following TCP packet:
+
+10.8.174.31.2619 > 10.8.232.128.63701: Flags \[F.\], 
+	seq 3584763922, ack 1412607161, win 510, length 0
+
+What state is the server in now?
+
+LISTEN
+
+ESTABLISHED
+
+SYN\_RCVD
+
+CLOSE\_WAIT
+
+CLOSED
+
+LAST\_ACK

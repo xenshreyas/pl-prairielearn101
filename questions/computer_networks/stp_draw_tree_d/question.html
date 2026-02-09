@@ -1,104 +1,33 @@
-<pl-question-panel>
-    <p>On the following network diagram, each bridge (green) is labeled with a two-digit bridge ID beneath its name. Hosts are shown in orange.</p>
-    <p>Next to each bridge port, indicate its final state (designated port, root port, or blocking) after the spanning tree protocol has converged.</p>
-<div class="alert alert-info">
-    <p>Note: if you are not sure which bridge port a particular drop-down menu is associated with, move your mouse over the drop-down - the tooltip will tell you which bridge port it is for.</p>
-</div>
+On the following network diagram, each bridge (green) is labeled with a two-digit bridge ID beneath its name. Hosts are shown in orange.
 
-</pl-question-panel>
+Next to each bridge port, indicate its final state (designated port, root port, or blocking) after the spanning tree protocol has converged.
 
+Note: if you are not sure which bridge port a particular drop-down menu is associated with, move your mouse over the drop-down - the tooltip will tell you which bridge port it is for.
 
-<pl-overlay width=800 height=640>
+DP RP 🛑
 
-    <pl-background>
-<pl-graph engine="neato">
-    graph G {
-    rankdir="TB";
-    overlap=false;
-     edge [len=1]
-      graph [splines=ortho, nodesep=1]
-         bgcolor="FloralWhite"
+DP RP 🛑
 
- size="7,8!";
+DP RP 🛑
 
-    {
-        node [fontname="courier" fontsize="11" colorscheme=accent3 style="filled" ]
-        edge [fontname="courier" fontsize="11" ]
-        
-    LA [height=0.3 width=1 shape=rect label="LAN A" fillcolor=2 ]
-    LB [height=0.3 width=1 shape=rect label="LAN B" fillcolor=2]
-    LC [height=0.3 width=1 shape=rect label="LAN C" fillcolor=2]
-    LD [height=0.3 width=1 shape=rect label="LAN D" fillcolor=2]
-    LE [height=0.3 width=1 shape=rect label="LAN E" fillcolor=2]
-    LF [height=0.3 width=1 shape=rect label="LAN F" fillcolor=2]
-    LG [height=0.3 width=1 shape=rect label="LAN G" fillcolor=2]
+DP RP 🛑
 
-    {{#params.bridges}}
-    {{name}} [width=1 shape=rect fillcolor=1 label="{{name}}\n{{id}}"]
-    {{/params.bridges}}
-        
+DP RP 🛑
 
-    HA [width=0.1 shape=rect fillcolor=3 label="Alice" ]
-    HB [width=0.1 shape=rect fillcolor=3 label="Bob" ]
-    HC [width=0.1 shape=rect fillcolor=3 label="Charlie" ]
-    HD [width=0.1 shape=rect fillcolor=3 label="David" ]
-    HE [width=0.1 shape=rect fillcolor=3 label="Eva" ]
-    #HF [width=0.1 shape=rect fillcolor=3 label="Frank" ]
-    #HG [width=0.1 shape=rect fillcolor=3 label="Grace" ]
+DP RP 🛑
 
-    HA -- LA [minlen=2]
-    HB -- LB [minlen=2]
-    HC -- LC [minlen=2]
-    HD -- LD [minlen=2]
-    HE -- LE [minlen=2]
-    #HF -- LF [minlen=2]
-    #HG -- LG [minlen=1]
+DP RP 🛑
 
-    catt -- LB [taillabel="2" len=1.2 ]
-    eng -- LB [taillabel="2"  len=1.2]
-    
-    eng -- LC [taillabel="1"  len=1.2]
-    utopia -- LC [taillabel="2"  len=1.2 ]
-    
-    catt -- LD [taillabel="1" len=1.2 ]
-    photon -- LD [taillabel="1"  len=1.2]
+DP RP 🛑
 
+DP RP 🛑
 
-    utopia -- LA [taillabel="1"  len=1.2 ]
-    duke -- LA [taillabel="1"  len=1.2 ]
-    
-    duke -- LE [taillabel="2"  len=1.2 ]
-    photon -- LE [taillabel="4"  len=1.2 ]
-    
-    photon -- LF [taillabel="3" len=1.2 ]
-    
-    photon -- LG [taillabel="2" len=1.2 ]
-    catt -- LG [taillabel="3"  len=1.2]
+DP RP 🛑
 
-    }
+DP RP 🛑
 
-    }
-</pl-graph>
-    </pl-background>
+DP RP 🛑
 
-    {{#params.menus}}
-    <pl-location left="{{x}}" top="{{y}}">
-        <span title="{{bridge}} port {{port}}">
-        <pl-dropdown sort="fixed" answers-name="{{bridge}}-{{port}}" weight="1">
-          <pl-answer correct="{{dp}}">DP</pl-answer>
-          <pl-answer correct="{{rp}}">RP</pl-answer>
-          <pl-answer correct="{{bl}}">🛑</pl-answer>
-    </pl-dropdown></span>
-    </pl-location>
-    {{/params.menus}}
+DP RP 🛑
 
-</pl-overlay>
-
-
-<!--
-<pl-answer-panel><br><hr>
-<p><span class="badge badge-primary">Comment</span></p>
-
-
-</pl-answer-panel>
--->
+G LA LAN A LB LAN B LC LAN C LD LAN D LE LAN E LF LAN F LG LAN G photon photon 53 photon--LD 1 photon--LE 4 photon--LF 3 photon--LG 2 catt catt 79 catt--LB 2 catt--LD 1 catt--LG 3 utopia utopia 25 utopia--LA 1 utopia--LC 2 duke duke 55 duke--LA 1 duke--LE 2 eng eng 47 eng--LB 2 eng--LC 1 HA Alice HA--LA HB Bob HB--LB HC Charlie HC--LC HD David HD--LD HE Eva HE--LE

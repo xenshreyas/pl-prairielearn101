@@ -1,38 +1,16 @@
-<pl-question-panel>
-<markdown>
 After you've gone through `DL1`, select 5 question types in PrairieLearn that you are most interested in for your course and context, and then rank them (most interesting is at the top of the list).
-</markdown>
 
-<!-- START This section is written using moustache templating and shows a red alert when the input is ungradeable and a 
-    green alert when the submission is successful -->
+Drag from here:
 
+*   Autograded Code (you'll see this in the next part!)
+*   Drawing
+*   File Upload
+*   Long Open Text
+*   Numeric
+*   Order Blocks
+*   Select from a list (multiple choice, dropdown, checkbox, matching)
+*   Short Open Text
+*   Symbolic
+*   Workspace
 
-{{ #format_errors.questions.invalid }}
-<div class="alert alert-danger" role="alert">{{.}}</div>
-{{ /format_errors.questions.invalid }}
-
-{{ #score }}
-
-{{ ^format_errors.questions.invalid }}
-<div class="alert alert-success" role="alert">Thank you for submitting your responses and ranking! Stay tuned for more...</div>
-{{ /format_errors.questions.invalid }}
-
-{{ /score }}
-
-<!-- End. For more details about moustache templating, see https://mustache.github.io/mustache.5.html -->
-
-
-</pl-question-panel>
-
-<pl-order-blocks answers-name="questions" grading-method="ranking">
-  <pl-answer correct="false">Select from a list (multiple choice, dropdown, checkbox, matching)</pl-answer>
-  <pl-answer correct="true" ranking="1">Numeric</pl-answer>
-  <pl-answer correct="true" ranking="2">Symbolic</pl-answer>
-  <pl-answer correct="true" ranking="3">Short Open Text</pl-answer>
-  <pl-answer correct="true" ranking="4">Long Open Text</pl-answer>
-  <pl-answer correct="true" ranking="5">Order Blocks</pl-answer>
-  <pl-answer correct="false">File Upload</pl-answer>
-  <pl-answer correct="false">Drawing</pl-answer>
-  <pl-answer correct="false">Workspace</pl-answer>
-  <pl-answer correct="false">Autograded Code (you'll see this in the next part!)</pl-answer>
-</pl-order-blocks>
+Construct your solution here:

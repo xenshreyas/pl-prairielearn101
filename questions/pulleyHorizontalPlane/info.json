@@ -1,12 +1,12 @@
 {
-    "uuid": "d033fd64-764f-43b7-bdcd-c3f527906a72",
-    "title": "Compute acceleration on masses connected by cable",
-    "topic": "Forces",
-    "tags": [
-        "author:prairielearn.com",
-        "license:CC-BY-NC",
-        "su23",
-        "calculation"
-    ],
-    "type": "v3"
+  "uuid": "d033fd64-764f-43b7-bdcd-c3f527906a72",
+  "title": "Compute acceleration on masses connected by cable",
+  "topic": "Forces",
+  "tags": [
+    "author:prairielearn.com",
+    "license:CC-BY-NC",
+    "su23",
+    "calculation"
+  ],
+  "type": "v3"
 }

@@ -1,64 +1,96 @@
-<link rel="stylesheet" href="{{ options.client_files_course_url }}/iap.css">
+The following image shows the CWND of a TCP Reno (AIMD + Fast Recovery) sender over time:
 
-<pl-question-panel>
-  <p>The following image shows the CWND of a TCP Reno (AIMD + Fast Recovery) sender over time:</p>
-  <pl-figure file-name="cwnd.png" type="dynamic"></pl-figure>
-  <br><br>
-</pl-question-panel>
-
-<hr>
-  <p>For each of the following time intervals, indicate whether the sender is in slow start or congestion avoidance.</p>
-
-<table class="table-arial-no-border" width="100%">
-    <thead>
-        <tr>
-            <th>Time interval</th>
-            <th>State</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#params.intervals}}
-    <tr style="background-color:{{color}};">
-        <td style="padding: 10px; border: 5px solid white;">{{name}}</td>
-        <td style="padding: 10px; border: 5px solid white;">
-            <pl-multiple-choice answers-name="state-{{name}}" fixed-order="true" inline="true" hide-letter-keys="true">
-                <pl-answer correct="{{ss}}">Slow start</pl-answer>
-                <pl-answer correct="{{ca}}">Congestion avoidance</pl-answer>
-            </pl-multiple-choice>
-        </td>
-    </tr>
-    {{/params.intervals}}
-    </tbody>
-</table>
-
-
-
-<hr>
-
-  <p>In the following time intervals, the CWND is reduced. In each case, what triggered the reduction in CWND?.</p>
-<table class="table-arial-no-border" width="100%">
-    <thead>
-        <tr>
-            <th>Time interval</th>
-            <th>Reason</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#params.transitions}}
-    <tr style="background-color: #f8f9fa;">
-        <td style="padding: 10px; border: 5px solid white;">{{i}}</td>
-        <td style="padding: 10px; border: 5px solid white;">
-            <pl-multiple-choice answers-name="reason-{{i}}" fixed-order="true" inline="true" hide-letter-keys="true">
-                <pl-answer correct="{{timeout}}">Timeout</pl-answer>
-                <pl-answer correct="{{dupack}}">Triple duplicate ACK</pl-answer>
-            </pl-multiple-choice>
-        </td>
-    </tr>
-    {{/params.transitions}}
-    </tbody>
-</table>
+  
   
 
-<hr>
-<p><small>Attribution: This question is based on the <a href="https://gaia.cs.umass.edu/kurose_ross/interactive/tcp_evolution.php">TCP practice problem</a> from Kurose and Ross "Computer Networking: A Top-Down Approach".</small></p>
+* * *
 
+For each of the following time intervals, indicate whether the sender is in slow start or congestion avoidance.
+
+Time interval
+
+State
+
+0-5
+
+Slow start
+
+Congestion avoidance
+
+6-10
+
+Slow start
+
+Congestion avoidance
+
+11-15
+
+Slow start
+
+Congestion avoidance
+
+16-20
+
+Slow start
+
+Congestion avoidance
+
+21-30
+
+Slow start
+
+Congestion avoidance
+
+31-35
+
+Slow start
+
+Congestion avoidance
+
+36-49
+
+Slow start
+
+Congestion avoidance
+
+50-58
+
+Slow start
+
+Congestion avoidance
+
+* * *
+
+In the following time intervals, the CWND is reduced. In each case, what triggered the reduction in CWND?.
+
+Time interval
+
+Reason
+
+5-6
+
+Timeout
+
+Triple duplicate ACK
+
+15-16
+
+Timeout
+
+Triple duplicate ACK
+
+30-31
+
+Timeout
+
+Triple duplicate ACK
+
+49-50
+
+Timeout
+
+Triple duplicate ACK
+
+* * *
+
+Attribution: This question is based on the TCP practice problem from Kurose and Ross "Computer Networking: A Top-Down Approach".

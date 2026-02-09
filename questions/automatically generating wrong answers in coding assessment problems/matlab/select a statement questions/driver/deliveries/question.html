@@ -1,322 +1,395 @@
-<pl-full-width></pl-full-width>
-
-<pl-question-panel>
-<markdown>
 #### Introduction
 
-*{{params.company_name}}* is a shipping company specializing in {{params.specialty}}. *{{params.company_name}}* has three options for deliveries: via {{params.option1}}, via {{params.option2}}, and via {{params.option3}}. 
+_Donut Delivery_ is a shipping company specializing in delivering fresh, hot donuts to any location on Proxima B. _Donut Delivery_ has three options for deliveries: via bicycle, via scooter, and via motorcycle.
 
-*{{params.company_name}}* has delivery data from the past month. The data is organized by the distance the item was shipped (in {{params.plot_x_units}}), the time it took to deliver the item (in {{params.plot_y_units}}), and the cost for the delivery (in $PB -- Proxima b dollars). The delivery data is stored in a file named `{{params.data_in_filename}}`. Here is a snapshot of what this file could look like:  
+_Donut Delivery_ has delivery data from the past month. The data is organized by the distance the item was shipped (in miles), the time it took to deliver the item (in mins), and the cost for the delivery (in $PB -- Proxima b dollars). The delivery data is stored in a file named `donutDeliveries.csv`. Here is a snapshot of what this file could look like:
 
-|     |
-|:---:|
-|<pl-figure file-name="{{params.data_in_image}}" directory="clientFilesQuestion" width="800px"></pl-figure>|
-|*{{params.data_in_caption}}*|
-|     |
-
-
+_delivery data from the past month; includes the distance the item was shipped (in miles), the time it took to deliver the item (in minutes), and the cost for the delivery (in $PB -- Proxima b dollars)_
 
 #### Tasks
-You are interning at *{{params.company_name}}*, and you have been asked to **write a "driver" script** that will {{params.task}}.  The script should produce two files:
 
-* `{{params.plot_out_image}}` - {{params.plot_out_caption}}
-* `{{params.data_out_filename}}` - {{params.data_out_caption}}
+You are interning at _Donut Delivery_, and you have been asked to **write a "driver" script** that will analyze the shipping rates for these delivery options based on the distance from the pick-up location to the drop-off location and the time from when the delivery order was placed to when the package was delivered. The script should produce two files:
 
+*   `deliveryRates.png` - a plot showing the relationship between distance, time, and estimated shipping cost
+*   `deliveryRates.csv` - a file that can be used as a "look up table" to see the estimated shipping costs for different combinations of distance and time
 
 Here is an example of the two files produced by this script:
 
-|     |     |     |
-|:---:|:---:|:---:|
-|<pl-figure file-name="{{params.plot_out_image}}" directory="clientFilesQuestion" ></pl-figure>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<pl-figure file-name="{{params.data_out_image}}" directory="clientFilesQuestion" ></pl-figure>|
-|*{{{params.plot_out_caption}}}*|                 |*{{params.data_out_caption}}*|
-|   |   |   |
+          
 
-&nbsp;  
+_a plot showing the relationship between distance, time, and estimated shipping cost_
 
-&nbsp;  
+_a file that can be used as a "look up table" to see the estimated shipping costs for different combinations of distance and time_
 
+The driver script relies on several **helper functions**, whose interfaces and documentation are given in the **reference material**. Part of your task relies on understanding the connections between helper functions and the driver script, as well as a holistic understanding of the problem to be solved.
 
+Your fellow interns have written the set of helper functions for you to use. Here are the functions they have written:
 
+*   `coefs()`
+*   `simulateRates()`
+*   `getLabels()`
 
+See the Reference Material for more information on these helper functions. You may assume all of these functions work as intended and there are no bugs in the helper functions.
 
-The driver script relies on several **helper functions**, whose interfaces and documentation are given in the **reference material**. Part of your task relies on understanding the connections between helper functions and the driver script, as well as a holistic understanding of the problem to be solved.  
+**The reference material for this question contains key details about each step in the driver program you need to write.** We recommend you skim it briefly and refer back to it as you compose your script below. The reference material also includes information about the **data/image files** and **helper functions** used by the driver script.
 
-Your fellow interns have written the set of helper functions for you to use. Here are the functions they have written:  
-
-{{{params.helperFunctionList}}}  
-
-See the Reference Material for more information on these helper functions. You may assume all of these functions work as intended and there are no bugs in the helper functions.  
-
-
-**The reference material for this question contains key details about each step in the driver program you need to write.** We recommend you skim it briefly and refer back to it as you compose your script below. The reference material also includes information about the **data/image files** and **helper functions** used by the driver script.  
-
-
----
-</markdown>
-</pl-question-panel>
-
-
-<pl-hide-in-panel answer="true">
-<pl-side-by-side>
-<pl-content>
-
-<pl-hide-in-panel submission="true">
-<markdown>
+* * *
 
 ### Implementation
 
-Implement your script by selecting from the lines of code given below for each part. Click all lines that should be included. You are not able to change the relative ordering of the lines. When finished, **the selected lines should form a working script** that correctly implements the tasks described in this question. Some lines contain **mistakes** or are **unnecessary** for the script - these lines should not be selected. **Points will be deducted if you select unnecessary lines of code.** 
+Implement your script by selecting from the lines of code given below for each part. Click all lines that should be included. You are not able to change the relative ordering of the lines. When finished, **the selected lines should form a working script** that correctly implements the tasks described in this question. Some lines contain **mistakes** or are **unnecessary** for the script - these lines should not be selected. **Points will be deducted if you select unnecessary lines of code.**
 
 We have also provided several **comments** to help structure your functions according to the task descriptions.
 
-</markdown>
-</pl-hide-in-panel>
-  
-  
-  <pl-code language="matlab">   % ----------- {{params.step1description}} ----------- </pl-code>
-  <pl-checkbox answers-name='step1' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line1a}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line1a}}
-    {{#params.line1b}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line1b}}
-  </pl-checkbox>
-  <br>
-   
-  <pl-code language="matlab">   % ----------- {{params.step2description}} ----------- </pl-code>
-  <pl-checkbox answers-name='step2' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line2}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line2}}
-  </pl-checkbox>
-  <br>
-  
-  <pl-code language="matlab">   % ----------- {{params.step3description}} ----------- </pl-code>
-  <pl-checkbox answers-name='step3' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line3}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line3}}
-  </pl-checkbox>
-  <br>
+   % ----------- Clear workspace and close figures ----------- 
 
-  <pl-code language="matlab">   % ----------- {{params.step4description}} ----------- </pl-code>
-  <pl-code language="matlab">   % {{params.comment1}} </pl-code>
-  <pl-checkbox answers-name='step4a' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line4a}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line4a}}
-  </pl-checkbox>
-  <pl-checkbox answers-name='step4b' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line4b}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line4b}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment2}} </pl-code>
-  <pl-checkbox answers-name='step4c' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line4c}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line4c}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment3}} </pl-code>
-  <pl-checkbox answers-name='step4d' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line4d}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line4d}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment4}} </pl-code>
-  <pl-checkbox answers-name='step4e' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line4e}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line4e}}
-  </pl-checkbox>
-  <br>
+Checkbox options
 
-  <pl-code language="matlab">   % ----------- {{params.step5description}} ----------- </pl-code>
-  <pl-code language="matlab">   % {{params.comment5}} </pl-code>
-  <pl-checkbox answers-name='step5a' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line5a}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line5a}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment6}} </pl-code>
-  <pl-checkbox answers-name='step5b' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line5b}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line5b}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment7}} </pl-code>
-  <pl-checkbox answers-name='step5c' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line5c}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line5c}}
-  </pl-checkbox>
-  <pl-checkbox answers-name='step5d' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line5d}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line5d}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment8}} </pl-code>
-  <pl-code language="matlab">   % {{params.comment9}} </pl-code>
-  <pl-checkbox answers-name='step5e' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line5e}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line5e}}
-  </pl-checkbox>
-  <br>
+free
 
-  <pl-code language="matlab">   % ----------- {{params.step6description}} ----------- </pl-code>
-  <pl-code language="matlab">   % {{params.comment10}} </pl-code>
-  <pl-checkbox answers-name='step6a&b' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line6a}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line6a}}
-    {{#params.line6b}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line6b}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment11}} </pl-code>
-  <pl-code language="matlab">   % {{params.comment12}} </pl-code>
-  <pl-checkbox answers-name='step6c' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line6c}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line6c}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment13}} </pl-code>
-  <pl-checkbox answers-name='step6d' partial-credit='false' hide-help-text='true' detailed-help-text='false' hide-letter-keys = 'true' hide-answer-panel='true'  >
-    {{#params.line6d}}
-    <pl-answer correct="{{tag}}"><pl-code language="matlab">{{ans}}</pl-code></pl-answer>
-    {{/params.line6d}}
-  </pl-checkbox>
-  <pl-code language="matlab">   % {{params.comment14}} </pl-code>
+reload
+
+close all
+
+clear
+
+delete
+
+sweep
 
   
-</pl-content>
 
+   % ----------- Read in data ----------- 
 
+Checkbox options
 
-<pl-reference>
+data \= readtable('donutDeliveries.csv');
 
+donutDeliveries.csv \= readtable{};
 
+input\[\];
 
-<markdown>
+  
+
+   % ----------- Analyze Data ----------- 
+
+Checkbox options
+
+c \= coefs(data.Distance, data.TravelTime, data.Cost);
+
+c \= function coefs(data.Distance, data.TravelTime, data.Cost);
+
+c \= function coefs{data.Distance, data.TravelTime, data.Cost};
+
+  
+
+   % ----------- Simulate Data ----------- 
+
+   % create starter data vectors 
+
+Checkbox options
+
+distances \= \['0' , '2' , '80'\];
+
+distances \= 0 : 2 : 80;
+
+distances \= '0' : '2' : '80';
+
+Checkbox options
+
+times \= 0 : 0.5 : 35;
+
+times \= '0' : '0.5' : '35';
+
+times \= \['0.5' , '35' , '0'\];
+
+   % create matrices to represent all combinations of distance and time 
+
+Checkbox options
+
+\[D, T\] \= mesh\[distances, times\];
+
+\[D, T\] \= meshgrid(distances, times);
+
+(D, T) \= function meshgrid\[distances, times\];
+
+   % call simulateRates function to simulate rates 
+
+Checkbox options
+
+deliveryRates \= simulateRates(D, T, c);
+
+deliveryRates \= simulateRates();
+
+deliveryRates \= simulateRates{};
+
+deliveryRates \= simulateRates\[\];
+
+   % round the rates to nearest hundredth 
+
+Checkbox options
+
+deliveryRates \= round(2, deliveryRates);
+
+deliveryRates \= round(deliveryRates, 2);
+
+round\[deliveryRates, 2\];
+
+  
+
+   % ----------- Display Plot ----------- 
+
+   % make plot 
+
+Checkbox options
+
+contourf{D, T, deliveryRates};
+
+contourf\[D, T, deliveryRates\];
+
+contourf(D, T, deliveryRates);
+
+   % annotate plot 
+
+Checkbox options
+
+xlabel('distance (miles)');
+ylabel('time (mins)');
+
+xlabel \= 'distance (miles)';
+ylabel \= 'time (mins)';
+
+   % access the colorbar graphic object so we can 
+   % change some of its properties 
+   c \= colorbar; 
+
+Checkbox options
+
+c.Label.String \= cost to ship package ($PB); 
+
+c.Label.String \= 'cost to ship package ($PB)'; 
+
+Checkbox options
+
+c.Ticks \= (\[min(deliveryRates(:)) : 10 : max(deliveryRates(:))\]); 
+
+c.Ticks \= (\[min(deliveryRates(:)) : max(deliveryRates(:))\]); 
+
+   % (more annotations to make the plot look nice;
+   % these lines not shown for the sake of brevity and 
+   % because there's a different question on plotting 
+   % so we don't need to do more of that plotting stuff here) 
+
+   % save the plot as deliveryRates.png 
+
+Checkbox options
+
+print(deliveryRates.png, '-dpng');
+
+save\[\];
+
+print\[deliveryRates.png, '-dpng'\];
+
+  
+
+   % ----------- Create Table ----------- 
+
+   % use the getLabels function to generate labels for the rate table 
+
+Checkbox options
+
+getLabels\[times, 'mins'\];
+
+getLabels();
+
+timeLabels \= getLabels(times, 'mins');
+
+getLabels(distances, 'miles');
+
+distanceLabels \= getLabels(distances, 'miles');
+
+{distances, 'miles'} \= getLabels(distanceLabels);
+
+   % create the first column (with the time labels) 
+   % and the rest of the columns (with the rates) 
+   firstColumn \= table(timeLabels,'VariableNames',{'Rates ($PB)'}); 
+   colRates \= array2table(c); 
+   colRates.Properties.VariableNames \= distLabels; 
+
+   % combine the first column with the rest of the columns 
+   % to create the rate table 
+
+Checkbox options
+
+rateTable \= {firstColumn, colRates};
+
+rateTable \= \[firstColumn, colRates\];
+
+   % save the rate table as a .csv file 
+
+Checkbox options
+
+rateTable \= save(rateTable, 'deliveryRates.csv');
+
+writetable\[rateTable, 'deliveryRates.csv'\];
+
+writetable(rateTable, 'deliveryRates.csv');
+
+   % %----------------- END OF SCRIPT ----------------- 
+
+Reference Material
 
 ### Input Files
 
 Here are the data files available for your script to read into MATLAB:
 
-{{{params.inputFilesList}}}
+*   `donutDeliveries.csv` \-- delivery data from the past month; includes the distance the item was shipped (in miles), the time it took to deliver the item (in minutes), and the cost for the delivery (in $PB -- Proxima b dollars)
 
-
----
+* * *
 
 ### Script Outline
-Here is an outline of how this script is be structured. 
 
-{{{params.script_algorithm}}}
+Here is an outline of how this script is be structured.
 
----
-### Helper Functions  
+**CLEAR WORKSPACE AND CLOSE FIGURES**  
+Clear the workspace of any existing variables and close all figures that may be open. This way, there will be no existing information that might interfere with this script.
+
+**READ IN DATA**  
+Load the delivery data from the `donutDeliveries.csv` file.
+
+**ANALYZE DATA**  
+Call the `coefs` helper function to determine the coefficients needed for the simulation; pass in table columns `Distance`, `TravelTime`, and `Cost`.
+
+**SIMULATE DATA**  
+Create starter data vectors for distance and time:
+
+*   distance should be from 0 to 80 with a step size of 2
+*   time should be from 0 to 35 with a step size of 0.5
+
+Create matrices that represent all the combinations of distance and time in the starter data vectors.
+
+Call the `simulateRates` helper function to simulate rates using the coefficients and the starter data matrices representing all combinations of distance and time.  
+Round the simulated rates to the nearest hundredth.
+
+**DISPLAY PLOT**  
+Plot the simulated data as shown in the sample figure.
+
+Annotate the plot as shown in the sample figure; for the color bar, use tick marks that are every 10 $PB.
+
+Save the plot as a `.png` file.
+
+**CREATE TABLE**  
+Use the `getLabels` helper function to create labels for the simulated data; include information about the units for both distance and time.
+
+Create a table that has one column: the time labels; create another table that has the simulated data with distance labels as column names _**(this step is done for you)**_
+
+Combine these two tables into one table that can be used as a reference table for the employees at _Donut Delivery_
+
+Save the reference table as a `.csv` file.
+
+* * *
+
+### Helper Functions
 
 These helper functions will be used in your script. Please scroll down to read about the parameters and return values for each helper function. You may assume all helper functions work correctly and as intended.
 
----
+* * *
 
-#### `{{params.func1name}}()`  
-    
-The `{{params.func1name}}()` function {{params.func1description}}.  
-    
-**Parameters & Return Values**   
-    
-The `{{params.func1name}}()` function has the following parameter(s):  
+#### `coefs()`
 
-{{{params.func1parameterList}}}  
+The `coefs()` function analyzes a vector of data and returns a vector of coefficients to be used in the simulation.
 
-The `{{params.func1name}}()` function returns the following value(s):  
+**Parameters & Return Values**
 
-{{{params.func1returnVarList}}}  
+The `coefs()` function has the following parameter(s):
 
-**Example of Calling this Function**
+1.  a vector of numerical values representing distances
+2.  a vector of numerical values representing times
+3.  a vector of numerical values representing costs
 
-<pl-code language="matlab">
-{{{params.func1example}}}
-</pl-code>
+The `coefs()` function returns the following value(s):
 
-
-
----
-
-#### `{{params.func2name}}()`  
-    
-The `{{params.func2name}}()` function {{params.func2description}}.  
-    
-**Parameters & Return Values**  
-    
-The `{{params.func2name}}()` function has the following parameter(s):  
-
-{{{params.func2parameterList}}}  
-
-The `{{params.func2name}}()` function returns the following value(s):  
-
-{{{params.func2returnVarList}}}  
-    
+1.  a vector of numerical values representing the coefficients needed for the simulation helper function
 
 **Example of Calling this Function**
 
-<pl-code language="matlab">
-{{{params.func2example}}}
-</pl-code>
+\>> c \= coefs(\[1 2 3\], \[2.8 9.5 1.2\], \[6.1 4.4 6.8\])  
+c \=  
+     0.903     0.207     \-9.124     8.910  
+\>> x \= \[30.0   16.5   22.5   30.0    9.0\]  
+\>> y \= \[ 3.0    6.0    1.5    9.0    6.0\];  
+\>> z \= \[ 7.2   24.0   12.0    6.0    8.4\];  
+\>> c \= coefs(x,y,z)  
+c \=  
+     5.932     \-4.887     0.003     1.672
 
----
+* * *
 
-#### `{{params.func3name}}()`  
-    
-The `{{params.func3name}}()` function {{params.func3description}}.  
-    
-**Parameters & Return Values**  
-    
-The `{{params.func3name}}()` function has the following parameter(s):  
+#### `simulateRates()`
 
-{{{params.func3parameterList}}}  
+The `simulateRates()` function analyzes a set of distances and times and returns a vector of estimated shipping rates.
 
-The `{{params.func3name}}()` function returns the following value(s):  
+**Parameters & Return Values**
 
-{{{params.func3returnVarList}}}
+The `simulateRates()` function has the following parameter(s):
+
+1.  a matrix of numerical values representing distances
+2.  a matrix of numerical values representing times
+3.  a vector of numerical values representing the coefficients returned from the `coefs` function
+
+The `simulateRates()` function returns the following value(s):
+
+1.  a matrix of shipping rates that represents the estimated shipping rates for each distance and time combination in the matrices that are passed in to each of the first two parameters
 
 **Example of Calling this Function**
 
-<pl-code language="matlab">
-{{{params.func3example}}}
-</pl-code>
+% omitted: code that creates the X, Y, and c variables.  
+% They now have these values:  
+X \=  
+   11.5200    1.2800   11.5200  
+    1.2800    6.4000    2.5600  
+    3.8400    1.2800    1.2800  
+Y \=  
+    9.5900   27.4000    2.7400  
+   13.7000    9.5900    8.2200  
+    4.1100    8.2200    1.3700  
+c \=  
+     6.187     0.871     \-3.334     \-1.087  
+\>> r \= simulateRates(X,Y,c)  
+r \=  
+    3.9800    4.6100    5.3800  
+    4.0100    4.6600    5.4400  
+    4.0300    4.6800    5.4700
 
+* * *
 
+#### `getLabels()`
 
+The `getLabels()` function adds a unit label to each numerical value in a vector.
 
-</markdown>
+**Parameters & Return Values**
 
-</pl-reference>
-</pl-side-by-side>
-</pl-hide-in-panel>
+The `getLabels()` function has the following parameter(s):
 
+1.  a vector of numerical values
+2.  a string representing the units for those values
 
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
+The `getLabels()` function returns the following value(s):
 
-This question uses the following skills: 
+1.  a cell array containing strings consisting of the numerical value with its units
 
-* using MATLAB tables to store data of different types
-* using functions to create stable and efficient computer programs
-* using plots to convey information and trends in data
-* assembling a driver program/script to perform a set of tasks using helper functions
+**Example of Calling this Function**
 
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
-
-
-
-
-
+\>> x \= \[ 1 2 3 \];  
+\>> y \= getLabels(x', 'Newtons')  
+y \=  
+  3×1 cell array  
+    {'1 Newtons'}  
+    {'2 Newtons'}  
+    {'3 Newtons'}  
+\>> z \= getLabels(x','cats')  
+z \=  
+  3×1 cell array  
+    {'1 cats'}  
+    {'2 cats'}  
+    {'3 cats'}

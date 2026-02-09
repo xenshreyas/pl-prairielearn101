@@ -1,87 +1,56 @@
-<!-- Question Template -->
+Some questions may ask you to choose one or more correct answers from a list.
 
-<pl-question-panel>
-    <p>Some questions may ask you to choose one or more correct answers from a list.</p>
+Note: you will not be able to submit your answer for grading if you've left any of the parts unanswered! Your submission will be marked "invalid" and you will not use up one of your attempts if this happens.
 
-    <div class="alert alert-info" role="alert">
-        Note: you will not be able to submit your answer for grading if you've left any of the parts unanswered! Your submission will be marked "invalid" and you will not use up one of your attempts if this happens.
-    </div>
+Part 1: Multiple-Choice
 
-</pl-question-panel>
+A multiple-choice question with round radio buttons requires you to select exactly one correct answer:
 
-<!-- Part 1 Start -->
+Correct answer
 
-<div class="card my-2">
+Wrong answer
 
-    <div class="card-header">Part 1: Multiple-Choice</div>
-    <div class="card-body">
+Another wrong answer
 
+Part 2: Dropdown
 
-        <p>A multiple-choice question with round radio buttons requires you to select exactly one correct answer:</p>
+A question with a dropdown list also asks you to select exactly one correct answer:
 
-        <pl-multiple-choice answers-name="mc" hide-letter-keys="true">
-            <pl-answer correct="true">Correct answer</pl-answer>
-            <pl-answer correct="false">Wrong answer</pl-answer>
-            <pl-answer correct="false">Another wrong answer</pl-answer>
-        </pl-multiple-choice>
+The correct answer is Another wrong answer Wrong answer Correct answer
 
-    </div>
-</div>
+Part 3: Checkbox
 
-<!-- Part 2 Start -->
+A checkbox question with square check buttons requires you to select at least one, but possibly more, correct answers:
 
-<div class="card my-2">
+Checkbox options
 
-    <div class="card-header">Part 2: Dropdown</div>
-    <div class="card-body">
+Correct answer
 
-        <p>A question with a dropdown list also asks you to select exactly one correct answer:</p>
+Also a correct answer
 
-        The correct answer is <pl-dropdown answers-name="dr">
-            <pl-answer correct="true">Correct answer</pl-answer>
-            <pl-answer correct="false">Wrong answer</pl-answer>
-            <pl-answer correct="false">Another wrong answer</pl-answer>
-        </pl-dropdown>
+Another wrong answer
 
-    </div>
-</div>
+Wrong answer
 
-<!-- Part 3 Start -->
+Select all possible options that apply.
 
-<div class="card my-2">
+Part 4: Matching
 
-    <div class="card-header">Part 3: Checkbox</div>
-    <div class="card-body">
+You may also encounter a matching question, like this one which asks you to match countries to their capitals:
 
-        <p>A checkbox question with square check buttons requires you to select at least one, but possibly more, correct
-            answers:</p>
+a b c d
 
-        <pl-checkbox answers-name="ch" hide-letter-keys="true">
-            <pl-answer correct="true">Correct answer</pl-answer>
-            <pl-answer correct="true">Also a correct answer</pl-answer>
-            <pl-answer correct="false">Wrong answer</pl-answer>
-            <pl-answer correct="false">Another wrong answer</pl-answer>
-        </pl-checkbox>
+United States
 
-    </div>
-</div>
+a b c d
 
-<!-- Part 4 Start -->
+Mexico
 
-<div class="card my-2">
+a b c d
 
-    <div class="card-header">Part 4: Matching</div>
-    <div class="card-body">
+France
 
-        <p>You may also encounter a matching question, like this one which asks you to match countries to their
-            capitals:</p>
-
-        <pl-matching answers-name="capitals">
-            <pl-statement match="Washington, D.C.">United States</pl-statement>
-            <pl-statement match="Mexico City">Mexico</pl-statement>
-            <pl-statement match="Paris">France</pl-statement>
-            <pl-option>New York City</pl-option>
-        </pl-matching>
-
-    </div>
-</div>
+1.  Paris
+2.  Washington, D.C.
+3.  Mexico City
+4.  New York City

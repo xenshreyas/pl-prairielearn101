@@ -1,32 +1,26 @@
-{{#params}}
-  <pl-question-panel>
-    <p>
-      Given the following data definition:
-      <pl-code language="haskell">
-data {{TypeName}} = {{#Cases}}{{Constructor}}{{#Types}} {{.}}{{/Types}}
-     {{TypeNameSpaces}} | {{/Cases}}{{#LastCase}}{{Constructor}}{{#Types}} {{.}}{{/Types}}{{/LastCase}}
-  deriving (Eq, Show) -- this line is only to help with your debugging!
-</pl-code>
-    </p>
-    <p>
-        Notice that every case but one has a <code>{{SelectedType}}</code> argument.
-    </p>
-    <p>
-        Now, define a function that takes a <code>{{TypeName}}</code> and produces the <code>{{SelectedType}}</code>
-        inside that <code>{{TypeName}}</code>. In the <code>{{NoSTConstructor}}</code> case that has no <code>{{SelectedType}}</code>
-        argument, it should produce <code>{{DefaultValue}}</code>.
-    </p>
-    <pl-file-editor
-    file-name="Lib.hs"
-    ace-mode="ace/mode/haskell"
-    ace-theme="ace/theme/monokai"
-  >extract{{SelectedTypeID}} :: {{TypeName}} -> {{SelectedType}}
-extract{{SelectedTypeID}} = undefined
-</pl-file-editor>
-</pl-question-panel>
+Given the following data definition:
 
-<pl-submission-panel>
-  <pl-external-grader-results></pl-external-grader-results>
-  <pl-file-preview></pl-file-preview>
-</pl-submission-panel>
-{{/params}}
+data Flob \= Corge String
+          | Lub Double \[Bool\]
+          | Mest String Int
+  deriving (Eq, Show) \-- this line is only to help with your debugging!
+
+Notice that every case but one has a `String` argument.
+
+Now, define a function that takes a `Flob` and produces the `String` inside that `Flob`. In the `Lub` case that has no `String` argument, it should produce `""`.
+
+Lib.hs
+
+##### Editor Settings
+
+Editor Theme
+
+Font Size
+
+Key Bindings
+
+Close Save changes
+
+Restore original file
+
+Confirm restore original Cancel

@@ -1,133 +1,53 @@
-<pl-full-width></pl-full-width>
+We have a function about simulating ship characteristics called `simShips` that has the following parameter(s):
 
-<pl-question-panel>
-<markdown>
-We have a function about {{params.topic}} called <code>{{params.functionName}}</code> that has the following parameter(s): 
+1.  a vector of structs of the characteristics of the ships that qualify as viable (starts empty, and then the function "fills up" the vector)
+2.  a vector of possible ship vertical centers of buoyancy
 
-{{params.parameterList}}
-
-The function does not return any values. 
-
-
+The function does not return any values.
 
 Here is the function definition:
 
-<pl-code language="c++">
-{{params.functionHeader}}
+void simShips(vector<ShipData\> &shipsViable, const vector<double\> &VCB) {
     // implementation omitted for brevity
 }
-</pl-code>
 
 You may assume this function is written correctly and behaves as intended.
 
 Your colleagues are writing a program, and they have declared these variable(s):
 
-<pl-code language="c++">
-{{params.argumentList}}
-</pl-code>
+vector<ShipData\> shipsViable; 
+vector<double\> vertCB \= //code that initializes the vector  
 
-**Your colleagues are trying to use the <code>{{params.functionName}}</code> function in their code, but they've made some mistakes. Help them figure out what they've done wrong and how to fix it!**
+**Your colleagues are trying to use the `simShips` function in their code, but they've made some mistakes. Help them figure out what they've done wrong and how to fix it!**
 
-**For each attempt at calling the <code>{{params.functionName}}</code> function below, select the *best* description of the bug and the *best* description of how to fix the bug.**
+**For each attempt at calling the `simShips` function below, select the _best_ description of the bug and the _best_ description of how to fix the bug.**
 
-</markdown>
-</pl-question-panel>
+* * *
 
+#### Function Call #1
 
+  
 
+simShips(vertCB, shipsViable);
 
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function Call #1  
-<br>  
-<pl-code language="c++">
-{{params.arguments}}{{params.call1}}
-</pl-code>
-<br>  
-Hmmm... here's the problem! This person has... 
-</markdown>
+  
+Hmmm... here's the problem! This person has... forgotten to store the return value from a non-void function included an & for arguments that are being passed by reference included the variable types with the arguments included the word "function" when calling the function mixed up the order of the arguments tried to store a return value from a void function used the function header instead of calling the function used the wrong brackets/braces/parentheses used variables that either do not exist or were not intended to be used in this function call
 
-<pl-dropdown answers-name="bug1answer" sort="ascend">
-
-    {{#params.bugs1}}
-        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-    {{/params.bugs1}}
-
-</pl-dropdown> 
-
-<markdown>
 Instead, they should...
-</markdown>
 
-<pl-dropdown answers-name="fix1answer" sort="ascend">
+add a declared variable and an equal sign before the function call double check that they are passing the correct arguments to the correct parameters double-check that the correct variables are being used in this function call remove the & (that goes in the function header, but not when calling the function) remove the variable and equal sign -- you just call a void function and it does its stuff remove the variable types (those go in the function header, but not when calling the function) remove the word "function" -- you just have to use the name of the function review how to call a function (given the function header) use () for passing the arguments
 
-  {{#params.fixes1}}
-      <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-  {{/params.fixes1}}
+* * *
 
-</pl-dropdown> 
+#### Function Call #2
 
-</pl-hide-in-panel>
+  
 
+simShips(&shipsViable, &vertCB);
 
+  
+Hmmm... here's the problem! This person has... forgotten to store the return value from a non-void function included an & for arguments that are being passed by reference included the variable types with the arguments included the word "function" when calling the function mixed up the order of the arguments tried to store a return value from a void function used the function header instead of calling the function used the wrong brackets/braces/parentheses used variables that either do not exist or were not intended to be used in this function call
 
-
-
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function Call #2  
-<br>  
-<pl-code language="c++">
-{{params.arguments}}{{params.call2}}
-</pl-code>
-<br>  
-Hmmm... here's the problem! This person has... 
-</markdown>
-
-<pl-dropdown answers-name="bug2answer" sort="ascend">
-
-    {{#params.bugs2}}
-        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-    {{/params.bugs2}}
-
-</pl-dropdown> 
-
-<markdown>
 Instead, they should...
-</markdown>
 
-<pl-dropdown answers-name="fix2answer" sort="ascend">
-
-  {{#params.fixes2}}
-      <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-  {{/params.fixes2}}
-
-</pl-dropdown> 
-
-</pl-hide-in-panel>
-
-
-
-
-
-
-
-
-
-
-
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
-
-This question uses the following skills: 
-
-* calling custom C++ functions
-* understanding common mistakes in calling custom C++ functions
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
+add a declared variable and an equal sign before the function call double check that they are passing the correct arguments to the correct parameters double-check that the correct variables are being used in this function call remove the & (that goes in the function header, but not when calling the function) remove the variable and equal sign -- you just call a void function and it does its stuff remove the variable types (those go in the function header, but not when calling the function) remove the word "function" -- you just have to use the name of the function review how to call a function (given the function header) use () for passing the arguments

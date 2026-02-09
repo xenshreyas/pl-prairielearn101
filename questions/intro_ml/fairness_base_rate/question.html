@@ -1,178 +1,139 @@
-<style>
-    th, td {
-      padding: 15px;
-      border: 5px solid white;
-    }
-</style>
+Until now, the ECE department at the Starfleet Technical University has had an open admissions policy for graduate students: any student who wanted to enroll was allowed to. However, they are interested in moving to a selective admissions policy, and they want to use a data-driven approach to admit the students who are most likely to be successful in their program.
 
-<pl-question-panel>
-  <p> Until now, the ECE department at the {{params.refs.overall}} has had an open 
-    admissions policy for graduate students: any student who wanted to enroll was allowed to. 
-    However, they are interested in moving to a selective admissions policy, and they want 
-    to use a data-driven approach to admit the students who are most likely to be successful 
-    in their program.</p>
-    <p>You are hired to develop a model that will classify students as 
-    "likely to achieve high GPA" (positive class) or "not likely to achieve high GPA" 
-    (negative class). They have given you the last two years of student applications and 
-    those students' ﬁnal GPAs, to use for training.</p>
+You are hired to develop a model that will classify students as "likely to achieve high GPA" (positive class) or "not likely to achieve high GPA" (negative class). They have given you the last two years of student applications and those students' ﬁnal GPAs, to use for training.
 
-  <p>You train a regression model to predict GPA, select a threshold on which to make the
-    Admit/Reject decision, and present the results to the ECE department.</p> 
-    
-  <p>Upon seeing the output of your model, however, the department head objects: "We can't use 
-    this! It does not treat students from {{params.refs.g1}} and students from {{params.refs.g2}} equally." </p>
+You train a regression model to predict GPA, select a threshold on which to make the Admit/Reject decision, and present the results to the ECE department.
+
+Upon seeing the output of your model, however, the department head objects: "We can't use this! It does not treat students from Tau Cygna V Colony and students from Delta Rana IV Colony equally."
+
+Is the department head correct? How will you respond to this concern?
+
+* * *
+
+Here is a confusion matrix showing the performance of your model for students from Tau Cygna V Colony:
+
+Actual Positive
+
+Actual Negative
+
+Predicted Positive
+
+3617
+
+273
+
+Predicted Negative
+
+2169
+
+1266
+
   
-  <p>Is the department head correct? How will you respond to this concern?</p>
-    
-<hr>
 
-<p>Here is a confusion matrix showing the performance of your model for students from {{params.refs.g1}}:</p>
+And here is a confusion matrix showing the performance of your model for students from Delta Rana IV Colony:
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Actual Positive</th>
-      <th>Actual Negative</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Predicted Positive</th>
-      <td bgcolor="{{params.g1_cm_colors.tp}}">{{params.g1_cm.tp}}</td>
-      <td bgcolor="{{params.g1_cm_colors.fp}}">{{params.g1_cm.fp}}</td>
-    </tr>
-    <tr>
-      <th>Predicted Negative</th>
-      <td bgcolor="{{params.g1_cm_colors.fn}}">{{params.g1_cm.fn}}</td>
-      <td bgcolor="{{params.g1_cm_colors.tn}}">{{params.g1_cm.tn}}</td>
-    </tr>
-  </tbody>
-</table>
+Actual Positive
 
-<br>
+Actual Negative
 
-<p>And here is a confusion matrix showing the performance of your model for students from {{params.refs.g2}}:</p>
+Predicted Positive
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Actual Positive</th>
-      <th>Actual Negative</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Predicted Positive</th>
-      <td bgcolor="{{params.g2_cm_colors.tp}}">{{params.g2_cm.tp}}</td>
-      <td bgcolor="{{params.g2_cm_colors.fp}}">{{params.g2_cm.fp}}</td>
-    </tr>
-    <tr>
-      <th>Predicted Negative</th>
-      <td bgcolor="{{params.g2_cm_colors.fn}}">{{params.g2_cm.fn}}</td>
-      <td bgcolor="{{params.g2_cm_colors.tn}}">{{params.g2_cm.tn}}</td>
-    </tr>
-  </tbody>
-</table>
+2283
 
-</pl-question-panel>
+910
 
-<br><br>
+Predicted Negative
 
-<div class='card card-default'>
-  <div class='card-header'>Part 1: Predicted vs. actual positivity rates</div>
-  <div class='card-body'>
+2733
 
-    <p>Do the model's admission rates match the rates of high-achieving students in the data, both overall and for each group?</p>
+4748
 
-    <table style='background-color: #f8f9fa;'>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Actual positivity rate: $P(y = 1)$</th>
-          <th>Model admission rate: $P(\hat{y} = 1)$</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Overall</th>
-          <td><pl-number-input answers-name='pos-overall-actual' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          <td><pl-number-input answers-name='pos-overall-pred' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-        </tr>
-        <tr>
-          <th>Students from {{params.refs.g1}}</th>
-          <td><pl-number-input answers-name='pos-g1-actual' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          <td><pl-number-input answers-name='pos-g1-pred' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-        </tr>
-        <tr>
-          <th>Students from {{params.refs.g2}}</th>
-          <td><pl-number-input answers-name='pos-g2-actual' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          <td><pl-number-input answers-name='pos-g2-pred' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-        </tr>
-      </tbody>
-    </table>
+  
+  
 
-  </div>
-</div>
-<br><br>
+Part 1: Predicted vs. actual positivity rates
 
-<div class='card card-default'>
-    <div class='card-header'>Part 2: Model performance metrics</div>
-    <div class='card-body'>
+Do the model's admission rates match the rates of high-achieving students in the data, both overall and for each group?
 
+Actual positivity rate: $P(y=1)$
 
-      <p>Is the model performance similar across groups? Evaluate the following metrics:</p>
+Model admission rate: $P(\\hat{y}=1)$
 
-      <table style='background-color: #f8f9fa;'>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Accuracy:<br>$P(\hat{y}=y)$</th>
-            <th>FOR:<br>$P(y=1|\hat{y}=0)$</th>
-            <th>FPR:<br>$P(\hat{y}=1|y=0)$</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Overall</th>
-            <td><pl-number-input answers-name='accuracy-overall' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='for-overall' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='fpr-overall' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          </tr>
-          <tr>
-            <th>Students from {{params.refs.g1}}</th>
-            <td><pl-number-input answers-name='accuracy-g1' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='for-g1' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='fpr-g1' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          </tr>
-          <tr>
-            <th>Students from {{params.refs.g2}}</th>
-            <td><pl-number-input answers-name='accuracy-g2' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='for-g2' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-            <td><pl-number-input answers-name='fpr-g2' suffix='%' comparison='decdig' digits='0' show-help-text='false' allow-blank='true'></pl-number-input>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-</div>
-<br><br>
+Overall
 
-<div class='card card-default'>
-    <div class='card-header'>Part 3: Fairness concerns</div>
-    <div class='card-body'>
-      <p>Given these computations, which of the following statements describes a fairness concerns with this admissions system? Select all that apply.</p>
-     <pl-question-panel>
-      <div class='alert alert-info' role='alert'>
-      Note: for purposes of this question, consider a difference between groups or between metrics meaningful only if it is greater than five percentage points.
-      </div>
-      </pl-question-panel>
-      <pl-checkbox answers-name='concerns' hide-letter-keys='true' fixed-order="true">
-          <pl-answer correct="false">The model is (at least five points) more accurate for students from {{params.refs.g2}} than for students from {{params.refs.g1}}.</pl-answer>
-          <pl-answer correct="false">The model is (at least five points) more accurate for students from {{params.refs.g1}} than for students from {{params.refs.g2}}.</pl-answer>
-        <pl-answer correct='{{params.ans.for}}'>Students from {{params.refs.g1}} who are not recommended for admission by the model, are more likely to be students who <i>would have been</i> successful (compared to students from {{params.refs.g2}}).</pl-answer>
-        <pl-answer correct='{{params.ans.fpr}}'>Students from {{params.refs.g1}} who would not be successful are more likely to be recommended for admission by the model anyway (compared to students from {{params.refs.g2}}).</pl-answer>
-      </pl-checkbox>
-    </div>
-</div>
-<br><br>
+ %
+
+ %
+
+Students from Tau Cygna V Colony
+
+ %
+
+ %
+
+Students from Delta Rana IV Colony
+
+ %
+
+ %
+
+  
+  
+
+Part 2: Model performance metrics
+
+Is the model performance similar across groups? Evaluate the following metrics:
+
+Accuracy:  
+$P(\\hat{y}=y)$
+
+FOR:  
+$P(y=1|\\hat{y}=0)$
+
+FPR:  
+$P(\\hat{y}=1|y=0)$
+
+Overall
+
+ %
+
+ %
+
+ %
+
+Students from Tau Cygna V Colony
+
+ %
+
+ %
+
+ %
+
+Students from Delta Rana IV Colony
+
+ %
+
+ %
+
+ %
+
+  
+  
+
+Part 3: Fairness concerns
+
+Given these computations, which of the following statements describes a fairness concerns with this admissions system? Select all that apply.
+
+Note: for purposes of this question, consider a difference between groups or between metrics meaningful only if it is greater than five percentage points.
+
+Checkbox options
+
+The model is (at least five points) more accurate for students from Delta Rana IV Colony than for students from Tau Cygna V Colony.
+
+The model is (at least five points) more accurate for students from Tau Cygna V Colony than for students from Delta Rana IV Colony.
+
+Students from Tau Cygna V Colony who are not recommended for admission by the model, are more likely to be students who _would have been_ successful (compared to students from Delta Rana IV Colony).
+
+Students from Tau Cygna V Colony who would not be successful are more likely to be recommended for admission by the model anyway (compared to students from Delta Rana IV Colony).
+
+Select all possible options that apply.

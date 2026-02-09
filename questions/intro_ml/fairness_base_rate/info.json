@@ -1,10 +1,10 @@
 {
-    "uuid": "fab73c1a-c15b-4fce-b6b2-5e4db8c77e2c",
-    "title": "Fairness between groups with different base rates",
-    "topic": "Fairness",
-    "tags": [
-        "ffund",
-        "numeric"
-    ],
-    "type": "v3"
+  "uuid": "fab73c1a-c15b-4fce-b6b2-5e4db8c77e2c",
+  "title": "Fairness between groups with different base rates",
+  "topic": "Fairness",
+  "tags": [
+    "ffund",
+    "numeric"
+  ],
+  "type": "v3"
 }

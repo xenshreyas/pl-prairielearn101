@@ -14,7 +14,9 @@
     "port": 8080,
     "home": "/home/jovyan",
     "rewriteUrl": false,
-    "gradedFiles": ["hello_world.py"]
+    "gradedFiles": [
+      "hello_world.py"
+    ]
   },
   "externalGradingOptions": {
     "enabled": false,

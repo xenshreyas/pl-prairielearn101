@@ -1,166 +1,71 @@
-<pl-question-panel>
-<markdown>
-We have a function about {{params.topic}} called <code>{{params.functionName}}</code> that has the following parameter(s): 
+We have a function about 3D printing called `costCalculation` that has the following parameter(s):
 
-{{params.parameterList}}
+1.  the volume of the 3D print
+2.  the weight per unit length of the filament to be used in the 3D print
 
-The function returns the following value(s): 
+The function returns the following value(s):
 
-{{params.returnVarList}}
-
-
+1.  an estimate of the length of filament the 3D print will require
+2.  how much the filament will costs for the 3D print
 
 Here is the function definition:
 
-<pl-code language="matlab">
-{{params.functionHeader}}
+function \[filamentLength, cost\] = costCalculation(printVol, weight)
     % implementation omitted for brevity
 }
-</pl-code>
 
 You may assume this function is written correctly and behaves as intended.
 
 Your colleagues are writing a program, and they have declared these variable(s):
 
-<pl-code language="matlab">
-{{params.argumentList}}
-</pl-code>
+printV \= 5.14; 
+W \= 3.03; 
 
-**Your colleagues are trying to use the <code>{{params.functionName}}</code> function in their code, but they've made some mistakes. Help them figure out what they've done wrong and how to fix it!**
+**Your colleagues are trying to use the `costCalculation` function in their code, but they've made some mistakes. Help them figure out what they've done wrong and how to fix it!**
 
-**For each attempt at calling the <code>{{params.functionName}}</code> function below, select the *best* description of the bug and the *best* description of how to fix the bug.**
+**For each attempt at calling the `costCalculation` function below, select the _best_ description of the bug and the _best_ description of how to fix the bug.**
 
-</markdown>
-</pl-question-panel>
+* * *
 
+#### Function Call #1
 
+  
 
+\[printV, W\] \= costCalculation(filamentLength, cost);
 
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function Call #1  
-<br>  
-<pl-code language="matlab">
-{{params.arguments}}{{params.call1}}
-</pl-code>
-<br>  
-Hmmm... here's the problem! This person has... 
-</markdown>
+  
+Hmmm... here's the problem! This person has... forgotten the equal sign to store the return value(s) forgotten to capture the return variable(s), but they correctly called the function! included the word "function" when calling the function mixed up the arguments with the return variables mixed up the order of the arguments mixed up which brackets/braces/parentheses go where used the function header instead of calling the function used variables that either do not exist or were not intended to be used in this function call
 
-<pl-dropdown answers-name="bug1answer" sort="ascend">
-
-    {{#params.bugs1}}
-        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-    {{/params.bugs1}}
-
-</pl-dropdown> 
-
-<markdown>
 Instead, they should...
-</markdown>
 
-<pl-dropdown answers-name="fix1answer" sort="ascend">
+add the return variable(s) to the left side of an equal sign (the assignment operator) double check that they are passing the correct arguments to the correct parameters double-check that the correct variables are being used in this function call insert an equal sign between the return variables and the function name remove the word "function"; you just have to use the name of the function review how to call a function (given the function header) switch the arguments with the return variables in their statement use \[\] for the return variable(s) and () for the arguments
 
-  {{#params.fixes1}}
-      <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-  {{/params.fixes1}}
+* * *
 
-</pl-dropdown> 
+#### Function Call #2
 
-</pl-hide-in-panel>
+  
 
+costCalculation(printV, W);
 
+  
+Hmmm... here's the problem! This person has... forgotten the equal sign to store the return value(s) forgotten to capture the return variable(s), but they correctly called the function! included the word "function" when calling the function mixed up the arguments with the return variables mixed up the order of the arguments mixed up which brackets/braces/parentheses go where used the function header instead of calling the function used variables that either do not exist or were not intended to be used in this function call
 
-
-
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function Call #2  
-<br>  
-<pl-code language="matlab">
-{{params.arguments}}{{params.call2}}
-</pl-code>
-<br>  
-Hmmm... here's the problem! This person has... 
-</markdown>
-
-<pl-dropdown answers-name="bug2answer" sort="ascend">
-
-    {{#params.bugs2}}
-        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-    {{/params.bugs2}}
-
-</pl-dropdown> 
-
-<markdown>
 Instead, they should...
-</markdown>
 
-<pl-dropdown answers-name="fix2answer" sort="ascend">
+add the return variable(s) to the left side of an equal sign (the assignment operator) double check that they are passing the correct arguments to the correct parameters double-check that the correct variables are being used in this function call insert an equal sign between the return variables and the function name remove the word "function"; you just have to use the name of the function review how to call a function (given the function header) switch the arguments with the return variables in their statement use \[\] for the return variable(s) and () for the arguments
 
-  {{#params.fixes2}}
-      <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-  {{/params.fixes2}}
+* * *
 
-</pl-dropdown> 
+#### Function Call #3
 
-</pl-hide-in-panel>
+  
 
+\[filamentLength, cost\] \= costCalculation(W, printV);
 
+  
+Hmmm... here's the problem! This person has... forgotten the equal sign to store the return value(s) forgotten to capture the return variable(s), but they correctly called the function! included the word "function" when calling the function mixed up the arguments with the return variables mixed up the order of the arguments mixed up which brackets/braces/parentheses go where used the function header instead of calling the function used variables that either do not exist or were not intended to be used in this function call
 
-
-
-
-<pl-hide-in-panel answer="true">
-<markdown>
----
-#### Function Call #3  
-<br>  
-<pl-code language="matlab">
-{{params.arguments}}{{params.call3}}
-</pl-code>
-<br>  
-Hmmm... here's the problem! This person has... 
-</markdown>
-
-<pl-dropdown answers-name="bug3answer" sort="ascend">
-
-    {{#params.bugs3}}
-        <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-    {{/params.bugs3}}
-
-</pl-dropdown> 
-
-<markdown>
 Instead, they should...
-</markdown>
 
-<pl-dropdown answers-name="fix3answer" sort="ascend">
-
-  {{#params.fixes3}}
-      <pl-answer correct="{{tag}}">{{ans}}</pl-answer>
-  {{/params.fixes3}}
-
-</pl-dropdown> 
-</pl-hide-in-panel>
-
-
-
-
-
-
-<pl-answer-panel>
-<markdown>
-The correct answers are not shown in this panel for problems in this course. 
-
-This question uses the following skills: 
-
-* calling custom MATLAB functions
-* understanding common mistakes in calling custom MATLAB functions
-
-If you did not get 100% on this question, review the course material for these skills, and then come in to office hours to make sure you feel comfortable with these skills before you take the actual assessment. 
-
-</markdown>
-</pl-submission-panel>
+add the return variable(s) to the left side of an equal sign (the assignment operator) double check that they are passing the correct arguments to the correct parameters double-check that the correct variables are being used in this function call insert an equal sign between the return variables and the function name remove the word "function"; you just have to use the name of the function review how to call a function (given the function header) switch the arguments with the return variables in their statement use \[\] for the return variable(s) and () for the arguments

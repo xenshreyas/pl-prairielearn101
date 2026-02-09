@@ -1,15 +1,34 @@
-<pl-question-panel>
-  <p> Suppose the following TCP ACK is received by a host running a TCP service:</p>
-  <pl-code language="text">
-{{params.server}}.{{params.sport}} > {{params.client}}.{{params.cport}}: 
-    Flags [.], ack {{params.ack}}, win 6227, length 0</pl-code>
-</pl-question-panel>
+Suppose the following TCP ACK is received by a host running a TCP service:
 
-<p>Before it received that ACK, the host sent all of the following TCP segments. Which of these can it conclude were received by the other endpoint? Select all that apply.</p>
+10.104.9.185.2428 > 10.216.188.80.54087: 
+    Flags \[.\], ack 1700677278, win 6227, length 0
 
-<pl-checkbox hide-letter-keys="true" answers-name="sent" fixed-order="true">
-{{#params.segs}}
-<pl-answer correct="{{ans}}"> <pl-code language="text">{{params.client}}.{{params.cport}} > {{params.server}}.{{params.sport}}: 
-    Flags [.], seq {{start}}:{{end}}, ack {{isn2}}, win 502, length 1448 </pl-code>  </pl-answer>
-{{/params.segs}}
-</pl-checkbox>
+Before it received that ACK, the host sent all of the following TCP segments. Which of these can it conclude were received by the other endpoint? Select all that apply.
+
+Checkbox options
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700672934:1700674382, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700674382:1700675830, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700675830:1700677278, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700677278:1700678726, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700678726:1700680174, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700680174:1700681622, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700681622:1700683070, ack , win 502, length 1448 
+
+10.216.188.80.54087 > 10.104.9.185.2428: 
+    Flags \[.\], seq 1700683070:1700684518, ack , win 502, length 1448 
+
+Select all possible options that apply.
