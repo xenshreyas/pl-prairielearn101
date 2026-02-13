@@ -2,7 +2,7 @@
   "uuid": "fbedad94-43e7-42a3-b7fd-c94f112436b7",
   "set": "Activity",
   "type": "Homework",
-  "title": "Part 1 Activity",
+  "title": "whats the new title",
   "number": "1",
   "allowAccess": [
     {
@@ -10,7 +10,7 @@
       "credit": 100
     }
   ],
-  "text": "This assessment should be done after Discover and Learn 1 (DL1)!",
+  "text": "WOAH",
   "zones": [
     {
       "title": "Question types",
