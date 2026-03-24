@@ -10,11 +10,5 @@
       "credit": 100
     }
   ],
-  "text": "This assessment should be done after Discover and Learn 4 (DL4)!",
-  "zones": [
-    {
-      "title": "Question types",
-      "questions": [{ "id": "tour/rankQuestionTypes", "points": 1 }]
-    }
-  ]
+  "text": "This assessment should be done after Discover and Learn 4 (DL4)!"
 }

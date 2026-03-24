@@ -25,10 +25,18 @@
     {
       "title": "Configuring Questions",
       "questions": [
-        { "id": "demos/randomized", "points": 1 },
-        { "id": "demos/single", "points": 1 },
-        { "id": "demos/tries_per_variant", "points": 1, "triesPerVariant": 2 },
-        { "id": "demos/timing", "points": 1, "gradeRateMinutes": 1 }
+        {
+          "id": "demos/randomized",
+          "autoPoints": 1
+        },
+        {
+          "id": "demos/single",
+          "autoPoints": 1
+        },
+        {
+          "id": "demos/tries_per_variant",
+          "autoPoints": 1
+        }
       ]
     }
   ]
