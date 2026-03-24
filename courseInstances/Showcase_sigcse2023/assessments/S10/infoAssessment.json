@@ -133,15 +133,6 @@
           "autoPoints": 1
         }
       ]
-    },
-    {
-      "title": "Application Layer",
-      "questions": [
-        {
-          "id": "computer_networks/ntp_compute",
-          "autoPoints": 1
-        }
-      ]
     }
   ]
 }
